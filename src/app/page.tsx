@@ -11,7 +11,7 @@ import { VideoSection } from "@/components/gospel/VideoSection";
 import { KidsJourney } from "@/components/gospel/KidsJourney";
 import { Footer } from "@/components/gospel/Footer";
 import { GOSPEL_STEPS } from "@/lib/gospel-data";
-import { BookMarked, ShieldCheck, Heart, ArrowRight } from "lucide-react";
+import { BookMarked, ShieldCheck, Heart, ArrowRight, MapPin } from "lucide-react";
 
 export default function HomePage() {
   const [viewMode, setViewMode] = useState<ViewMode>("narrative");
@@ -28,15 +28,14 @@ export default function HomePage() {
       />
 
       {/* Main Content Area */}
-      {/* Main Content Area */}
-      <main className="flex-1 max-w-5xl mx-auto px-4 sm:px-6 w-full pt-6 sm:pt-10 pb-20 relative z-10">
+      <main className="flex-1 max-w-5xl mx-auto px-3 sm:px-6 w-full pt-4 sm:pt-10 pb-16 sm:pb-20 relative z-10">
         {/* Ambient Glow Backdrop behind Hero */}
         <div className="absolute top-4 left-1/2 -translate-x-1/2 w-full max-w-3xl h-[380px] bg-gradient-to-b from-amber-500/15 via-sky-500/5 to-transparent rounded-full blur-3xl pointer-events-none -z-10" />
 
         {/* Hero Section */}
-        <section className="text-center pt-4 sm:pt-8 pb-10 max-w-3xl mx-auto no-print relative">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-surface/80 backdrop-blur-md border border-border shadow-sm text-xs font-semibold tracking-wide mb-6 animate-fade-in-up">
-            <span className="w-2 h-2 rounded-full bg-rose-500 animate-pulse" />
+        <section className="text-center pt-3 sm:pt-8 pb-8 sm:pb-10 max-w-3xl mx-auto no-print relative">
+          <div className="inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1.5 rounded-full bg-surface/80 backdrop-blur-md border border-border shadow-sm text-[11px] sm:text-xs font-semibold tracking-wide mb-5 sm:mb-6 animate-fade-in-up">
+            <span className="w-2 h-2 rounded-full bg-rose-500 animate-pulse shrink-0" />
             <span className="text-rose-600 dark:text-rose-400 font-bold">
               {viewMode === "kids" ? "Kids & Family Adventure" : "The Diagnosis & The Cure"}
             </span>
@@ -46,7 +45,7 @@ export default function HomePage() {
             </span>
           </div>
 
-          <h1 className="font-display text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-tight leading-[1.1] mb-6 animate-fade-in-up text-slate-900 dark:text-white">
+          <h1 className="font-display text-3xl sm:text-6xl md:text-7xl font-extrabold tracking-tight leading-[1.1] mb-4 sm:mb-6 animate-fade-in-up text-slate-900 dark:text-white">
             {viewMode === "kids" ? (
               <>
                 God&apos;s Big Story <span className="text-shimmer-gold">For You!</span>
@@ -58,14 +57,14 @@ export default function HomePage() {
             )}
           </h1>
 
-          <p className="text-base sm:text-xl text-gospel-muted leading-relaxed max-w-2xl mx-auto mb-8 animate-fade-in-up font-normal">
+          <p className="text-sm sm:text-xl text-gospel-muted leading-relaxed max-w-2xl mx-auto mb-6 sm:mb-8 animate-fade-in-up font-normal">
             {viewMode === "kids"
               ? "An exciting visual story discovering how God made you, loves you, and invites you into His forever family."
               : "Why is the human heart broken, and how does God resolve it? Understand the diagnosis of separation and the ultimate solution found in Jesus Christ."}
           </p>
 
           {/* Mode Switch Helper Pill */}
-          <div className="flex flex-wrap items-center justify-center gap-3 mb-8">
+          <div className="flex flex-wrap items-center justify-center gap-2.5 sm:gap-3 mb-6 sm:mb-8">
             <Link
               href="/the-problem"
               className="inline-flex items-center gap-2 px-4 py-2.5 rounded-2xl bg-rose-500/15 border border-rose-500/40 text-xs font-bold text-rose-700 dark:text-rose-300 hover:bg-rose-500 hover:text-white transition-all shadow-sm"
@@ -161,8 +160,8 @@ export default function HomePage() {
             <PrayerSection />
 
             {/* Explore Deeper Section */}
-            <section className="rounded-3xl p-6 sm:p-10 bg-gospel-surface border border-gospel-border shadow-md my-12">
-              <div className="text-center max-w-2xl mx-auto mb-8">
+            <section className="rounded-3xl p-4 sm:p-10 bg-gospel-surface border border-gospel-border shadow-md my-8 sm:my-12">
+              <div className="text-center max-w-2xl mx-auto mb-6 sm:mb-8">
                 <span className="text-xs uppercase tracking-widest font-bold text-amber-600 dark:text-amber-400 block mb-2">
                   Go Deeper in Scripture
                 </span>
@@ -170,24 +169,24 @@ export default function HomePage() {
                   Explore Biblical Themes
                 </h3>
                 <p className="text-xs sm:text-base text-gospel-muted mt-2">
-                  Discover why we need a savior, the extraordinary signs Jesus performed, and the life-changing stories He told.
+                  Discover why we need a savior, the extraordinary signs Jesus performed, the parables He taught, and find healthy churches nearby.
                 </p>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5 sm:gap-4">
                 {/* 1. The Problem */}
                 <Link
                   href="/the-problem"
-                  className="rounded-2xl p-5 bg-gospel-surface-raised border border-gospel-border hover:border-rose-500/50 transition-all hover:scale-[1.02] group shadow-sm flex flex-col justify-between"
+                  className="rounded-2xl p-4 sm:p-5 bg-gospel-surface-raised border border-gospel-border hover:border-rose-500/50 transition-all hover:scale-[1.02] group shadow-sm flex flex-col justify-between"
                 >
                   <div>
                     <span className="inline-flex items-center gap-1.5 text-[11px] font-bold px-2.5 py-1 rounded-lg bg-rose-500/15 text-rose-600 dark:text-rose-400 border border-rose-500/30 mb-3">
                       <span>⚠️ The Diagnosis</span>
                     </span>
-                    <h4 className="font-display font-bold text-lg text-gospel-text group-hover:text-rose-500 transition-colors">
+                    <h4 className="font-display font-bold text-base sm:text-lg text-gospel-text group-hover:text-rose-500 transition-colors">
                       The Problem
                     </h4>
-                    <p className="text-xs sm:text-sm text-gospel-muted mt-2 leading-relaxed">
+                    <p className="text-xs text-gospel-muted mt-2 leading-relaxed">
                       Why is the world broken? Why good deeds alone cannot cure our hearts, and why we desperately need a rescuer.
                     </p>
                   </div>
@@ -200,16 +199,16 @@ export default function HomePage() {
                 {/* 2. Miracles */}
                 <Link
                   href="/miracles"
-                  className="rounded-2xl p-5 bg-gospel-surface-raised border border-gospel-border hover:border-amber-500/50 transition-all hover:scale-[1.02] group shadow-sm flex flex-col justify-between"
+                  className="rounded-2xl p-4 sm:p-5 bg-gospel-surface-raised border border-gospel-border hover:border-amber-500/50 transition-all hover:scale-[1.02] group shadow-sm flex flex-col justify-between"
                 >
                   <div>
                     <span className="inline-flex items-center gap-1.5 text-[11px] font-bold px-2.5 py-1 rounded-lg bg-amber-500/15 text-amber-600 dark:text-amber-400 border border-amber-500/30 mb-3">
                       <span>✨ Signs & Wonders</span>
                     </span>
-                    <h4 className="font-display font-bold text-lg text-gospel-text group-hover:text-amber-500 transition-colors">
+                    <h4 className="font-display font-bold text-base sm:text-lg text-gospel-text group-hover:text-amber-500 transition-colors">
                       Miracles of Jesus
                     </h4>
-                    <p className="text-xs sm:text-sm text-gospel-muted mt-2 leading-relaxed">
+                    <p className="text-xs text-gospel-muted mt-2 leading-relaxed">
                       Calming storms, healing lepers, opening blind eyes, and raising the dead—see His divine power and compassion in action.
                     </p>
                   </div>
@@ -222,21 +221,44 @@ export default function HomePage() {
                 {/* 3. Parables */}
                 <Link
                   href="/parables"
-                  className="rounded-2xl p-5 bg-gospel-surface-raised border border-gospel-border hover:border-emerald-500/50 transition-all hover:scale-[1.02] group shadow-sm flex flex-col justify-between"
+                  className="rounded-2xl p-4 sm:p-5 bg-gospel-surface-raised border border-gospel-border hover:border-emerald-500/50 transition-all hover:scale-[1.02] group shadow-sm flex flex-col justify-between"
                 >
                   <div>
                     <span className="inline-flex items-center gap-1.5 text-[11px] font-bold px-2.5 py-1 rounded-lg bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 border border-emerald-500/30 mb-3">
                       <span>🧭 Stories with Meaning</span>
                     </span>
-                    <h4 className="font-display font-bold text-lg text-gospel-text group-hover:text-emerald-500 transition-colors">
-                      Parables & Meaning
+                    <h4 className="font-display font-bold text-base sm:text-lg text-gospel-text group-hover:text-emerald-500 transition-colors">
+                      Parables &amp; Meaning
                     </h4>
-                    <p className="text-xs sm:text-sm text-gospel-muted mt-2 leading-relaxed">
+                    <p className="text-xs text-gospel-muted mt-2 leading-relaxed">
                       The Prodigal Son, Good Samaritan, Sower, and more. Unpack the hidden heavenly meanings and modern takeaways.
                     </p>
                   </div>
                   <div className="mt-4 pt-3 border-t border-gospel-border flex items-center gap-1 text-xs font-bold text-emerald-500">
                     <span>Explore parables</span>
+                    <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+                  </div>
+                </Link>
+
+                {/* 4. Churches Nearby */}
+                <Link
+                  href="/churches"
+                  className="rounded-2xl p-4 sm:p-5 bg-gospel-surface-raised border border-gospel-border hover:border-sky-500/50 transition-all hover:scale-[1.02] group shadow-sm flex flex-col justify-between"
+                >
+                  <div>
+                    <span className="inline-flex items-center gap-1.5 text-[11px] font-bold px-2.5 py-1 rounded-lg bg-sky-500/15 text-sky-600 dark:text-sky-400 border border-sky-500/30 mb-3">
+                      <MapPin className="w-3.5 h-3.5 text-sky-500" />
+                      <span>Fellowship</span>
+                    </span>
+                    <h4 className="font-display font-bold text-base sm:text-lg text-gospel-text group-hover:text-sky-500 transition-colors">
+                      Churches Nearby
+                    </h4>
+                    <p className="text-xs text-gospel-muted mt-2 leading-relaxed">
+                      Find biblically sound local churches, verified global locators, and 5 key marks of a healthy gospel church.
+                    </p>
+                  </div>
+                  <div className="mt-4 pt-3 border-t border-gospel-border flex items-center gap-1 text-xs font-bold text-sky-500">
+                    <span>Find a church</span>
                     <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
                   </div>
                 </Link>

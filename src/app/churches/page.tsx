@@ -187,23 +187,23 @@ export default function ChurchesPage() {
           </p>
 
           {/* Quick Actions */}
-          <div className="pt-3 flex flex-wrap items-center justify-center gap-3">
+          <div className="pt-3 flex flex-col sm:flex-row items-center justify-center gap-2.5 sm:gap-3">
             <a
               href="https://www.google.com/maps/search/christian+churches+near+me"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2.5 px-6 py-3.5 rounded-2xl bg-amber-500 text-slate-950 font-extrabold text-sm shadow-lg shadow-amber-500/25 hover:bg-amber-400 hover:scale-105 active:scale-95 transition-all"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-3 sm:px-6 sm:py-3.5 rounded-2xl bg-amber-500 text-slate-950 font-extrabold text-xs sm:text-sm shadow-lg shadow-amber-500/25 hover:bg-amber-400 hover:scale-105 active:scale-95 transition-all"
             >
-              <Navigation className="w-4 h-4" />
+              <Navigation className="w-4 h-4 shrink-0" />
               <span>Search Churches Near Me on Google Maps</span>
-              <ExternalLink className="w-3.5 h-3.5 opacity-70" />
+              <ExternalLink className="w-3.5 h-3.5 opacity-70 shrink-0" />
             </a>
 
             <a
               href="#healthy-marks"
-              className="inline-flex items-center gap-2 px-5 py-3.5 rounded-2xl bg-gospel-surface border border-gospel-border text-xs sm:text-sm font-bold text-gospel-text hover:border-amber-500/50 hover:bg-gospel-surface-raised transition-all"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-4 py-3 sm:px-5 sm:py-3.5 rounded-2xl bg-gospel-surface border border-gospel-border text-xs sm:text-sm font-bold text-gospel-text hover:border-amber-500/50 hover:bg-gospel-surface-raised transition-all"
             >
-              <ShieldCheck className="w-4 h-4 text-emerald-500" />
+              <ShieldCheck className="w-4 h-4 text-emerald-500 shrink-0" />
               <span>What Makes a Church Healthy?</span>
             </a>
           </div>
@@ -288,12 +288,12 @@ export default function ChurchesPage() {
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder="Search by city (e.g. New York, London, Singapore) or church name..."
-                className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-gospel-canvas border border-gospel-border text-sm text-gospel-text placeholder:text-gospel-muted focus:outline-none focus:border-amber-500 transition-colors"
+                className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-gospel-canvas border border-gospel-border text-base sm:text-sm text-gospel-text placeholder:text-gospel-muted focus:outline-none focus:border-amber-500 transition-colors"
               />
             </div>
 
             {/* Tradition Chips */}
-            <div className="flex items-center gap-1.5 overflow-x-auto pb-1 text-xs">
+            <div className="flex items-center gap-1.5 overflow-x-auto no-scrollbar pb-1 text-xs">
               <span className="text-gospel-muted font-bold whitespace-nowrap pl-1 pr-2">
                 Tradition:
               </span>
@@ -301,7 +301,7 @@ export default function ChurchesPage() {
                 <button
                   key={tradition}
                   onClick={() => setSelectedTradition(tradition)}
-                  className={`px-3 py-1 rounded-lg font-medium whitespace-nowrap transition-all ${
+                  className={`px-3 py-1.5 rounded-lg font-medium whitespace-nowrap transition-all min-h-[32px] ${
                     selectedTradition === tradition
                       ? "bg-amber-500 text-slate-950 font-bold shadow-sm"
                       : "bg-gospel-canvas border border-gospel-border text-gospel-muted hover:text-gospel-text"

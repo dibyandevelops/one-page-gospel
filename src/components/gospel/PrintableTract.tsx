@@ -33,17 +33,17 @@ export function PrintableTract({ translation }: PrintableTractProps) {
             Optimized for printing on standard Letter or A4 paper. Headers, buttons, and dark mode backgrounds are automatically hidden for crisp black-and-white or color printing.
           </p>
         </div>
-        <div className="flex items-center gap-2">
+        <div className="flex flex-wrap items-center gap-2">
           <button
             onClick={handleCopyPrayer}
-            className="px-3.5 py-2 rounded-xl bg-gospel-surface border border-gospel-border text-xs font-semibold hover:border-amber-500/40 text-gospel-text transition-all flex items-center gap-1.5"
+            className="px-3 py-2 rounded-xl bg-gospel-surface border border-gospel-border text-xs font-semibold hover:border-amber-500/40 text-gospel-text transition-all flex items-center gap-1.5 min-h-[36px]"
           >
             {copied ? <Check className="w-3.5 h-3.5 text-emerald-500" /> : <Copy className="w-3.5 h-3.5 text-gospel-muted" />}
             <span>{copied ? "Prayer Copied" : "Copy Prayer"}</span>
           </button>
           <button
             onClick={() => window.print()}
-            className="px-4 py-2 rounded-xl bg-amber-500 hover:bg-amber-600 text-slate-950 font-extrabold text-xs flex items-center gap-2 shadow-md transition-all shrink-0"
+            className="px-3.5 py-2 rounded-xl bg-amber-500 hover:bg-amber-600 text-slate-950 font-extrabold text-xs flex items-center gap-2 shadow-md transition-all shrink-0 min-h-[36px]"
           >
             <Printer className="w-4 h-4" />
             <span>Print Tract</span>
@@ -52,7 +52,7 @@ export function PrintableTract({ translation }: PrintableTractProps) {
       </div>
 
       {/* The Printable Sheet Container */}
-      <div className="rounded-3xl bg-gospel-surface border border-gospel-border p-6 sm:p-10 shadow-xl print:border-none print:shadow-none print:p-0 print:m-0 print:bg-white text-slate-900 dark:text-white print:text-black">
+      <div className="rounded-2xl sm:rounded-3xl bg-gospel-surface border border-gospel-border p-4 sm:p-10 shadow-xl print:border-none print:shadow-none print:p-0 print:m-0 print:bg-white text-slate-900 dark:text-white print:text-black">
         {/* Tract Header */}
         <div className="border-b-2 border-amber-500/40 print:border-b-2 print:border-black pb-4 mb-6 flex flex-col sm:flex-row sm:items-end justify-between gap-3">
           <div>
