@@ -1,6 +1,6 @@
 import React from "react";
 import Link from "next/link";
-import { BookOpen, Heart, Sparkles, Compass, AlertTriangle } from "lucide-react";
+import { BookOpen, Heart, Sparkles, Compass, AlertTriangle, MapPin } from "lucide-react";
 
 export function Footer() {
   return (
@@ -43,6 +43,13 @@ export function Footer() {
             >
               <Compass className="w-3.5 h-3.5 text-emerald-500" />
               <span>Parables &amp; Meaning</span>
+            </Link>
+            <Link
+              href="/churches"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-gospel-surface border border-gospel-border hover:border-sky-500/50 hover:text-sky-500 transition-colors"
+            >
+              <MapPin className="w-3.5 h-3.5 text-sky-500" />
+              <span>Churches Nearby</span>
             </Link>
             <Link
               href="/study"

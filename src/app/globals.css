@@ -113,16 +113,37 @@ body {
 
 /* Print Stylesheet for Pristine 1-Page Tract */
 @media print {
+  @page {
+    size: A4 portrait;
+    margin: 8mm 10mm;
+  }
+
+  *, *:before, *:after {
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+
   body {
     background: #ffffff !important;
     background-image: none !important;
-    color: #111827 !important;
-    font-size: 11pt !important;
-    line-height: 1.4 !important;
+    color: #0f172a !important;
+    font-size: 10pt !important;
+    line-height: 1.35 !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
   }
 
+  header,
+  footer,
+  nav,
   .no-print {
     display: none !important;
+  }
+
+  main {
+    padding: 0 !important;
+    margin: 0 !important;
+    max-width: 100% !important;
   }
 
   .print-only {
@@ -130,8 +151,8 @@ body {
   }
 
   .print-break-inside-avoid {
-    break-inside: avoid;
-    page-break-inside: avoid;
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
   }
 
   a {
@@ -145,3 +166,4 @@ body {
     display: none !important;
   }
 }
+

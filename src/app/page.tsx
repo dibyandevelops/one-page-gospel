@@ -36,13 +36,13 @@ export default function HomePage() {
         {/* Hero Section */}
         <section className="text-center pt-4 sm:pt-8 pb-10 max-w-3xl mx-auto no-print relative">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-surface/80 backdrop-blur-md border border-border shadow-sm text-xs font-semibold tracking-wide mb-6 animate-fade-in-up">
-            <span className="w-2 h-2 rounded-full bg-amber-500 animate-pulse" />
-            <span className="text-amber-700 dark:text-amber-300 font-bold">
-              {viewMode === "kids" ? "Kids & Family Adventure" : "The Good News"}
+            <span className="w-2 h-2 rounded-full bg-rose-500 animate-pulse" />
+            <span className="text-rose-600 dark:text-rose-400 font-bold">
+              {viewMode === "kids" ? "Kids & Family Adventure" : "The Diagnosis & The Cure"}
             </span>
             <span className="text-gospel-border">•</span>
             <span className="text-gospel-muted">
-              {viewMode === "kids" ? "Storybook Edition" : "Simple • Clear • Life-Changing"}
+              {viewMode === "kids" ? "Storybook Edition" : "The Problem & The Solution in Plain Words"}
             </span>
           </div>
 
@@ -53,7 +53,7 @@ export default function HomePage() {
               </>
             ) : (
               <>
-                The Gospel in <span className="text-shimmer-gold">One Page</span>
+                The Problem &amp; <span className="text-shimmer-gold">The Solution</span>
               </>
             )}
           </h1>
@@ -61,27 +61,17 @@ export default function HomePage() {
           <p className="text-base sm:text-xl text-gospel-muted leading-relaxed max-w-2xl mx-auto mb-8 animate-fade-in-up font-normal">
             {viewMode === "kids"
               ? "An exciting visual story discovering how God made you, loves you, and invites you into His forever family."
-              : "The greatest message in the world: how a loving God rescues us and brings us home into His family through Jesus Christ."}
+              : "Why is the human heart broken, and how does God resolve it? Understand the diagnosis of separation and the ultimate solution found in Jesus Christ."}
           </p>
 
           {/* Mode Switch Helper Pill */}
           <div className="flex flex-wrap items-center justify-center gap-3 mb-8">
-            {viewMode !== "kids" ? (
-              <button
-                onClick={() => setViewMode("kids")}
-                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-2xl bg-gradient-to-r from-amber-500/15 via-rose-500/10 to-amber-500/15 border border-amber-500/40 text-xs font-bold text-amber-800 dark:text-amber-300 hover:border-amber-500 hover:scale-105 transition-all shadow-sm"
-              >
-                <span>🌟 Switch to Kid-Friendly Edition</span>
-                <ArrowRight className="w-3.5 h-3.5" />
-              </button>
-            ) : (
-              <button
-                onClick={() => setViewMode("narrative")}
-                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-2xl bg-gospel-surface border border-gospel-border text-xs font-bold text-gospel-muted hover:text-gospel-text hover:border-amber-500/40 transition-all shadow-sm"
-              >
-                <span>← Back to Standard Journey</span>
-              </button>
-            )}
+            <Link
+              href="/the-problem"
+              className="inline-flex items-center gap-2 px-4 py-2.5 rounded-2xl bg-rose-500/15 border border-rose-500/40 text-xs font-bold text-rose-700 dark:text-rose-300 hover:bg-rose-500 hover:text-white transition-all shadow-sm"
+            >
+              <span>⚠️ Understand The Problem</span>
+            </Link>
 
             <button
               onClick={() => setViewMode(viewMode === "bridge" ? "narrative" : "bridge")}
@@ -91,8 +81,25 @@ export default function HomePage() {
                   : "bg-gospel-surface border-gospel-border text-gospel-muted hover:text-amber-600 dark:hover:text-amber-400 hover:border-amber-500/40"
               }`}
             >
-              <span>Explore The Bridge Artwork</span>
+              <span>✨ Explore The Solution</span>
             </button>
+
+            {viewMode !== "kids" ? (
+              <button
+                onClick={() => setViewMode("kids")}
+                className="inline-flex items-center gap-2 px-4 py-2.5 rounded-2xl bg-gradient-to-r from-amber-500/15 via-rose-500/10 to-amber-500/15 border border-amber-500/40 text-xs font-bold text-amber-800 dark:text-amber-300 hover:border-amber-500 hover:scale-105 transition-all shadow-sm"
+              >
+                <span>🌟 Kids Edition</span>
+                <ArrowRight className="w-3.5 h-3.5" />
+              </button>
+            ) : (
+              <button
+                onClick={() => setViewMode("narrative")}
+                className="inline-flex items-center gap-2 px-4 py-2.5 rounded-2xl bg-gospel-surface border border-gospel-border text-xs font-bold text-gospel-muted hover:text-gospel-text hover:border-amber-500/40 transition-all shadow-sm"
+              >
+                <span>← Back to Main Journey</span>
+              </button>
+            )}
           </div>
 
           {/* Quick Stats Badges */}

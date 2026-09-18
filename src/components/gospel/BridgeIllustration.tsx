@@ -47,16 +47,16 @@ export function BridgeIllustration({ translation }: BridgeProps) {
       tooltipBadge: "text-rose-400 bg-rose-950/50 border-rose-600/30",
     },
     cross: {
-      title: "3. The Cross: Jesus the Bridge",
-      cliff: "The Bridge",
+      title: "3. The Solution: Jesus the Bridge",
+      cliff: "The Solution",
       verse: "1 Peter 3:18",
-      shortTooltip: "Jesus spans the gap! His life, cross, and resurrection make the only bridge back to God.",
+      shortTooltip: "Jesus is the solution! His life, cross, and resurrection solve the problem of sin and bridge the gap to God.",
       text: {
         ESV: "For Christ also suffered once for sins, the righteous for the unrighteous, that he might bring us to God.",
         NIV: "For Christ also suffered once for sins, the righteous for the unrighteous, to bring you to God.",
         KJV: "For Christ also hath once suffered for sins, the just for the unjust, that he might bring us to God.",
       },
-      note: "Jesus builds the bridge! By giving His life on the cross and rising again, Jesus connects us directly back to God.",
+      note: "Jesus is God's perfect solution! By giving His life on the cross and rising again, Jesus connects us directly back to God.",
       badgeColor: "border-amber-500 text-amber-600 dark:text-amber-400 bg-amber-500/15",
       tooltipBorder: "border-amber-400/60",
       tooltipBadge: "text-amber-300 bg-amber-500/25 border-amber-400/40",
@@ -118,7 +118,7 @@ export function BridgeIllustration({ translation }: BridgeProps) {
   };
 
   return (
-    <section className="rounded-3xl p-5 sm:p-10 bg-gospel-surface border border-amber-500/30 shadow-[0_0_60px_-20px_rgba(245,158,11,0.25)] my-10 overflow-visible relative">
+    <section id="solution" className="rounded-3xl p-5 sm:p-10 bg-gospel-surface border border-amber-500/30 shadow-[0_0_60px_-20px_rgba(245,158,11,0.25)] my-10 overflow-visible relative">
       {/* Background ambient glow */}
       <div className="absolute top-0 right-1/4 w-96 h-96 bg-amber-500/10 rounded-full blur-3xl pointer-events-none -z-10" />
 
@@ -128,10 +128,10 @@ export function BridgeIllustration({ translation }: BridgeProps) {
           Interactive Visual Story
         </span>
         <h2 className="font-display text-3xl sm:text-5xl font-extrabold text-gospel-text tracking-tight">
-          The Bridge to Eternal Life
+          The Solution: Jesus Bridges the Gap
         </h2>
         <p className="text-xs sm:text-base text-gospel-muted mt-2">
-          Click any button on the artwork to discover how Jesus bridges the gap between us and God.
+          Click any button on the artwork to discover how Jesus provides God&apos;s solution to the problem of sin.
         </p>
       </div>
 
@@ -272,7 +272,7 @@ export function BridgeIllustration({ translation }: BridgeProps) {
                 <div className="flex items-center justify-between gap-2 mb-1.5">
                   <span className="inline-flex items-center gap-1.5 text-[10px] sm:text-xs font-bold uppercase tracking-wider text-amber-300 bg-amber-500/25 px-2 py-0.5 rounded-md border border-amber-400/40">
                     <span className="w-1.5 h-1.5 rounded-full bg-amber-400 animate-ping" />
-                    Step 3 • The Bridge
+                    Step 3 • The Solution
                   </span>
                   <button
                     onClick={(e) => {
@@ -305,7 +305,7 @@ export function BridgeIllustration({ translation }: BridgeProps) {
               }`}
             >
               <span className="text-sm sm:text-base font-bold">✝</span>
-              3. The Bridge
+              3. The Solution
             </button>
           </div>
 
@@ -428,7 +428,7 @@ export function BridgeIllustration({ translation }: BridgeProps) {
                       : "bg-gospel-surface border border-gospel-border text-gospel-muted hover:text-gospel-text"
                   }`}
                 >
-                  {idx + 1}. {stepKey.toUpperCase()}
+                  {idx + 1}. {stepKey === "cross" ? "THE SOLUTION" : stepKey.toUpperCase()}
                 </button>
               </div>
             ))}
