@@ -18,6 +18,7 @@ import {
   Moon,
   Sun,
   Share2,
+  AlertTriangle,
 } from "lucide-react";
 import { useTheme } from "@/components/theme-provider";
 
@@ -93,6 +94,14 @@ export default function StudyPage() {
               <span>Back to Visual Journey</span>
             </Link>
             <span className="text-gospel-border">|</span>
+            <Link
+              href="/the-problem"
+              className="inline-flex items-center gap-1 text-xs font-bold text-rose-600 dark:text-rose-400 hover:text-rose-500 transition-colors"
+            >
+              <AlertTriangle className="w-3.5 h-3.5 text-rose-500" />
+              <span>The Problem</span>
+            </Link>
+            <span className="text-gospel-border hidden sm:inline">|</span>
             <span className="font-serif font-bold text-sm tracking-tight hidden sm:inline text-gospel-text">
               Study Guide &amp; Answers
             </span>

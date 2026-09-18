@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { BookOpen, Moon, Sun, Printer, Share2, Check, Compass, Sparkles, AlertTriangle, ChevronDown } from "lucide-react";
 import { useTheme } from "@/components/theme-provider";
 
@@ -21,6 +22,7 @@ export function Header({
   translation,
   setTranslation,
 }: HeaderProps) {
+  const pathname = usePathname();
   const { resolvedTheme, setTheme } = useTheme();
   const [copied, setCopied] = useState(false);
   const [exploreOpen, setExploreOpen] = useState(false);
@@ -70,7 +72,7 @@ export function Header({
           <button
             onClick={() => setViewMode("narrative")}
             className={`px-2.5 lg:px-3 py-1.5 rounded-lg transition-all ${
-              viewMode === "narrative"
+              pathname === "/" && viewMode === "narrative"
                 ? "bg-gospel-surface-raised text-gospel-text shadow-sm border border-gospel-border-strong font-bold"
                 : "text-gospel-muted hover:text-gospel-text"
             }`}
@@ -80,7 +82,7 @@ export function Header({
           <button
             onClick={() => setViewMode("bridge")}
             className={`px-2.5 lg:px-3 py-1.5 rounded-lg transition-all flex items-center gap-1.5 ${
-              viewMode === "bridge"
+              pathname === "/" && viewMode === "bridge"
                 ? "bg-gospel-surface-raised text-gospel-text shadow-sm border border-gospel-border-strong font-bold"
                 : "text-gospel-muted hover:text-gospel-text"
             }`}
@@ -88,10 +90,25 @@ export function Header({
             <Compass className="w-3.5 h-3.5 text-amber-500" />
             The Bridge
           </button>
+
+          {/* The Problem Link directly in navbar */}
+          <Link
+            href="/the-problem"
+            className={`px-2.5 lg:px-3 py-1.5 rounded-lg transition-all flex items-center gap-1.5 font-bold ${
+              pathname === "/the-problem"
+                ? "bg-rose-500 text-white shadow-sm shadow-rose-500/30"
+                : "text-rose-600 dark:text-rose-400 hover:bg-rose-500/10"
+            }`}
+            title="Why is humanity separated from God?"
+          >
+            <AlertTriangle className="w-3.5 h-3.5 text-rose-500" />
+            <span>The Problem</span>
+          </Link>
+
           <button
             onClick={() => setViewMode("tract")}
             className={`px-2.5 lg:px-3 py-1.5 rounded-lg transition-all ${
-              viewMode === "tract"
+              pathname === "/" && viewMode === "tract"
                 ? "bg-gospel-surface-raised text-gospel-text shadow-sm border border-gospel-border-strong font-bold"
                 : "text-gospel-muted hover:text-gospel-text"
             }`}
@@ -101,7 +118,7 @@ export function Header({
           <button
             onClick={() => setViewMode("kids")}
             className={`px-2.5 lg:px-3 py-1.5 rounded-lg transition-all flex items-center gap-1.5 ${
-              viewMode === "kids"
+              pathname === "/" && viewMode === "kids"
                 ? "bg-amber-500/20 text-amber-700 dark:text-amber-300 shadow-sm border border-amber-500/40 font-bold"
                 : "text-gospel-muted hover:text-amber-600 dark:hover:text-amber-400"
             }`}
@@ -110,6 +127,7 @@ export function Header({
             <span>Kids</span>
           </button>
         </nav>
+
 
         {/* Action controls */}
         <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
@@ -220,11 +238,11 @@ export function Header({
       </div>
 
       {/* Mobile Mode Switcher Subnav */}
-      <div className="md:hidden px-3 py-2 border-t border-gospel-border flex items-center justify-between gap-1 bg-gospel-surface/90 text-xs overflow-x-auto no-scrollbar">
+      <div className="md:hidden px-3 py-2 border-t border-gospel-border flex items-center justify-between gap-1.5 bg-gospel-surface/90 text-xs overflow-x-auto no-scrollbar">
         <button
           onClick={() => setViewMode("narrative")}
-          className={`px-2.5 py-1 rounded-lg text-xs font-semibold whitespace-nowrap transition-colors ${
-            viewMode === "narrative"
+          className={`px-2.5 py-1 rounded-lg text-xs font-semibold whitespace-nowrap transition-colors shrink-0 ${
+            pathname === "/" && viewMode === "narrative"
               ? "bg-gospel-surface-raised font-bold text-gospel-text border border-gospel-border-strong shadow-sm"
               : "text-gospel-muted"
           }`}
@@ -233,18 +251,29 @@ export function Header({
         </button>
         <button
           onClick={() => setViewMode("bridge")}
-          className={`px-2.5 py-1 rounded-lg text-xs font-semibold whitespace-nowrap transition-colors ${
-            viewMode === "bridge"
+          className={`px-2.5 py-1 rounded-lg text-xs font-semibold whitespace-nowrap transition-colors shrink-0 ${
+            pathname === "/" && viewMode === "bridge"
               ? "bg-gospel-surface-raised font-bold text-gospel-text border border-gospel-border-strong shadow-sm"
               : "text-gospel-muted"
           }`}
         >
           The Bridge
         </button>
+        <Link
+          href="/the-problem"
+          className={`px-2.5 py-1 rounded-lg text-xs whitespace-nowrap font-bold transition-colors flex items-center gap-1 shrink-0 ${
+            pathname === "/the-problem"
+              ? "bg-rose-500 text-white shadow-sm"
+              : "text-rose-600 dark:text-rose-400 bg-rose-500/15 hover:bg-rose-500 hover:text-white border border-rose-500/30"
+          }`}
+        >
+          <AlertTriangle className="w-3 h-3 text-rose-500" />
+          <span>The Problem</span>
+        </Link>
         <button
           onClick={() => setViewMode("tract")}
-          className={`px-2.5 py-1 rounded-lg text-xs font-semibold whitespace-nowrap transition-colors ${
-            viewMode === "tract"
+          className={`px-2.5 py-1 rounded-lg text-xs font-semibold whitespace-nowrap transition-colors shrink-0 ${
+            pathname === "/" && viewMode === "tract"
               ? "bg-gospel-surface-raised font-bold text-gospel-text border border-gospel-border-strong shadow-sm"
               : "text-gospel-muted"
           }`}
@@ -253,8 +282,8 @@ export function Header({
         </button>
         <button
           onClick={() => setViewMode("kids")}
-          className={`px-2.5 py-1 rounded-lg text-xs font-semibold whitespace-nowrap transition-colors flex items-center gap-1 ${
-            viewMode === "kids"
+          className={`px-2.5 py-1 rounded-lg text-xs font-semibold whitespace-nowrap transition-colors flex items-center gap-1 shrink-0 ${
+            pathname === "/" && viewMode === "kids"
               ? "bg-amber-500/20 text-amber-700 dark:text-amber-300 font-bold border border-amber-500/30"
               : "text-gospel-muted hover:text-amber-600 dark:hover:text-amber-400"
           }`}
@@ -262,26 +291,20 @@ export function Header({
           <span>Kids 🌟</span>
         </button>
         <Link
-          href="/the-problem"
-          className="px-2.5 py-1 rounded-lg text-xs whitespace-nowrap text-rose-600 dark:text-rose-400 bg-rose-500/10 font-bold hover:bg-rose-500 hover:text-white transition-colors border border-rose-500/30"
-        >
-          Problem
-        </Link>
-        <Link
           href="/miracles"
-          className="px-2.5 py-1 rounded-lg text-xs whitespace-nowrap text-amber-700 dark:text-amber-300 bg-amber-500/10 font-bold hover:bg-amber-500 hover:text-slate-950 transition-colors border border-amber-500/30"
+          className="px-2.5 py-1 rounded-lg text-xs whitespace-nowrap text-amber-700 dark:text-amber-300 bg-amber-500/10 font-bold hover:bg-amber-500 hover:text-slate-950 transition-colors border border-amber-500/30 shrink-0"
         >
           Miracles
         </Link>
         <Link
           href="/parables"
-          className="px-2.5 py-1 rounded-lg text-xs whitespace-nowrap text-emerald-700 dark:text-emerald-300 bg-emerald-500/10 font-bold hover:bg-emerald-500 hover:text-slate-950 transition-colors border border-emerald-500/30"
+          className="px-2.5 py-1 rounded-lg text-xs whitespace-nowrap text-emerald-700 dark:text-emerald-300 bg-emerald-500/10 font-bold hover:bg-emerald-500 hover:text-slate-950 transition-colors border border-emerald-500/30 shrink-0"
         >
           Parables
         </Link>
         <Link
           href="/study"
-          className="px-2.5 py-1 rounded-lg text-xs whitespace-nowrap text-amber-700 dark:text-amber-300 bg-amber-500/10 font-bold hover:bg-amber-500 hover:text-slate-950 transition-colors border border-amber-500/30"
+          className="px-2.5 py-1 rounded-lg text-xs whitespace-nowrap text-amber-700 dark:text-amber-300 bg-amber-500/10 font-bold hover:bg-amber-500 hover:text-slate-950 transition-colors border border-amber-500/30 shrink-0"
         >
           Study 📖
         </Link>
