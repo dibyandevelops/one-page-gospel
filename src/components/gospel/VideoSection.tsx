@@ -17,7 +17,7 @@ export function VideoSection({ isKidsMode = false }: VideoSectionProps) {
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3/4 h-3/4 bg-amber-500/10 rounded-full blur-3xl pointer-events-none" />
 
       <div className="text-center max-w-2xl mx-auto mb-8 relative z-10">
-        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-500/15 border border-amber-500/40 text-amber-400 text-xs font-bold uppercase tracking-wider mb-3 shadow-sm">
+        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-500/15 border border-amber-500/40 text-amber-700 dark:text-amber-300 text-xs font-bold uppercase tracking-wider mb-3 shadow-sm">
           <Sparkles className="w-3.5 h-3.5" />
           {isKidsMode ? "🎬 60-Second Animated Video" : "🎬 Visual Spotlight"}
         </div>
@@ -25,8 +25,8 @@ export function VideoSection({ isKidsMode = false }: VideoSectionProps) {
           {isKidsMode ? "Watch: The Gospel in One Minute!" : "The Gospel In One Minute"}
         </h2>
         <p className="text-xs sm:text-sm text-gospel-muted mt-2 flex items-center justify-center gap-2">
-          <span>A clear, fast, and animated presentation of the good news.</span>
-          <span className="inline-flex items-center gap-1 font-semibold text-amber-400 bg-amber-500/10 px-2.5 py-0.5 rounded-full text-[11px] border border-amber-500/20">
+          <span>A simple, fast, and animated summary of the good news.</span>
+          <span className="inline-flex items-center gap-1 font-semibold text-amber-700 dark:text-amber-300 bg-amber-500/15 px-2.5 py-0.5 rounded-full text-[11px] border border-amber-500/20">
             <Clock className="w-3 h-3" /> 1 min watch
           </span>
         </p>

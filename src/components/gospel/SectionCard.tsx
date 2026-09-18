@@ -150,7 +150,7 @@ export function SectionCard({ step, translation }: SectionCardProps) {
               className={`p-2 rounded-xl text-xs font-medium flex items-center gap-1.5 transition-all ${
                 isSpeaking
                   ? "bg-amber-500 text-slate-950 font-bold shadow-glow-gold animate-pulse"
-                  : "bg-gospel-surface border border-gospel-border text-gospel-muted hover:text-amber-400 hover:border-amber-400/40"
+                  : "bg-gospel-surface border border-gospel-border text-gospel-muted hover:text-amber-600 dark:hover:text-amber-400 hover:border-amber-500/40"
               }`}
             >
               {isSpeaking ? (
@@ -180,7 +180,7 @@ export function SectionCard({ step, translation }: SectionCardProps) {
             <div className="mt-5 pt-4 border-t border-gospel-border/50">
               <button
                 onClick={() => setShowMoreVerses(!showMoreVerses)}
-                className="text-xs font-semibold text-gospel-muted hover:text-amber-500 transition-colors flex items-center gap-1.5"
+                className="text-xs font-semibold text-gospel-muted hover:text-amber-600 dark:hover:text-amber-400 transition-colors flex items-center gap-1.5"
               >
                 {showMoreVerses ? (
                   <>
@@ -197,7 +197,7 @@ export function SectionCard({ step, translation }: SectionCardProps) {
                 <div className="mt-3 space-y-3 pl-3 border-l-2 border-gospel-border-strong animate-fade-in-up">
                   {step.supplementaryVerses.map((sv, idx) => (
                     <div key={idx} className="text-sm">
-                      <p className="font-semibold text-xs text-amber-400 font-mono mb-0.5">
+                      <p className="font-semibold text-xs text-amber-700 dark:text-amber-300 font-mono mb-0.5">
                         {sv.reference}
                       </p>
                       <p className="text-gospel-muted italic font-serif text-sm">
@@ -221,7 +221,7 @@ export function SectionCard({ step, translation }: SectionCardProps) {
             <ul className="space-y-2.5">
               {step.takeawayPoints.map((point, idx) => (
                 <li key={idx} className="flex items-start gap-2.5 text-sm text-gospel-text/90">
-                  <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
+                  <CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0 mt-0.5" />
                   <span>{point}</span>
                 </li>
               ))}
@@ -231,7 +231,7 @@ export function SectionCard({ step, translation }: SectionCardProps) {
           {/* Personal Reflection */}
           <div className="rounded-2xl p-5 bg-gradient-to-br from-amber-500/10 to-transparent border border-amber-500/30 flex flex-col justify-between">
             <div>
-              <div className="flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-amber-500 mb-2.5">
+              <div className="flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-amber-700 dark:text-amber-400 mb-2.5">
                 <HelpCircle className="w-4 h-4" />
                 Heart Reflection
               </div>

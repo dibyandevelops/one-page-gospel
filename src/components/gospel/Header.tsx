@@ -47,40 +47,40 @@ export function Header({
   };
 
   return (
-    <header className="sticky top-0 z-40 backdrop-blur-md bg-gospel-canvas/85 border-b border-gospel-border no-print transition-colors duration-200">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between gap-4">
+    <header className="sticky top-0 z-40 backdrop-blur-md bg-gospel-canvas/90 border-b border-gospel-border no-print transition-colors duration-200">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between gap-2 sm:gap-4">
         {/* Logo and title */}
-        <div className="flex items-center gap-3">
-          <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-amber-500 to-amber-700 flex items-center justify-center text-white shadow-md shadow-amber-500/20">
+        <Link href="/" className="flex items-center gap-2.5 shrink-0 group">
+          <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-amber-500 to-amber-700 flex items-center justify-center text-white shadow-md shadow-amber-500/20 group-hover:scale-105 transition-transform">
             <BookOpen className="w-5 h-5" />
           </div>
           <div>
-            <h1 className="font-serif text-lg sm:text-xl font-bold tracking-tight text-gospel-text flex items-center gap-2">
+            <span className="font-serif text-base sm:text-lg font-bold tracking-tight text-gospel-text block leading-none">
               One Page Gospel
-            </h1>
-            <p className="text-xs text-gospel-muted hidden sm:block">
-              The Good News in Clarity and Truth
-            </p>
+            </span>
+            <span className="text-[10px] text-gospel-muted hidden sm:block mt-0.5">
+              The Good News in Plain Words
+            </span>
           </div>
-        </div>
+        </Link>
 
-        {/* Center View Mode Switcher */}
-        <nav className="hidden md:flex items-center bg-gospel-surface p-1 rounded-xl border border-gospel-border text-xs font-medium">
+        {/* Center View Mode Switcher (Desktop & Tablet) */}
+        <nav className="hidden md:flex items-center bg-gospel-surface p-1 rounded-xl border border-gospel-border text-xs font-medium shrink-0">
           <button
             onClick={() => setViewMode("narrative")}
-            className={`px-3 py-1.5 rounded-lg transition-all ${
+            className={`px-2.5 lg:px-3 py-1.5 rounded-lg transition-all ${
               viewMode === "narrative"
-                ? "bg-gospel-surface-raised text-gospel-text shadow-sm border border-gospel-border-strong font-semibold"
+                ? "bg-gospel-surface-raised text-gospel-text shadow-sm border border-gospel-border-strong font-bold"
                 : "text-gospel-muted hover:text-gospel-text"
             }`}
           >
-            Guided Journey
+            Journey
           </button>
           <button
             onClick={() => setViewMode("bridge")}
-            className={`px-3 py-1.5 rounded-lg transition-all flex items-center gap-1.5 ${
+            className={`px-2.5 lg:px-3 py-1.5 rounded-lg transition-all flex items-center gap-1.5 ${
               viewMode === "bridge"
-                ? "bg-gospel-surface-raised text-gospel-text shadow-sm border border-gospel-border-strong font-semibold"
+                ? "bg-gospel-surface-raised text-gospel-text shadow-sm border border-gospel-border-strong font-bold"
                 : "text-gospel-muted hover:text-gospel-text"
             }`}
           >
@@ -89,38 +89,38 @@ export function Header({
           </button>
           <button
             onClick={() => setViewMode("tract")}
-            className={`px-3 py-1.5 rounded-lg transition-all ${
+            className={`px-2.5 lg:px-3 py-1.5 rounded-lg transition-all ${
               viewMode === "tract"
-                ? "bg-gospel-surface-raised text-gospel-text shadow-sm border border-gospel-border-strong font-semibold"
+                ? "bg-gospel-surface-raised text-gospel-text shadow-sm border border-gospel-border-strong font-bold"
                 : "text-gospel-muted hover:text-gospel-text"
             }`}
           >
-            1-Page Summary
+            Summary
           </button>
           <button
             onClick={() => setViewMode("kids")}
-            className={`px-3 py-1.5 rounded-lg transition-all flex items-center gap-1.5 ${
+            className={`px-2.5 lg:px-3 py-1.5 rounded-lg transition-all flex items-center gap-1.5 ${
               viewMode === "kids"
-                ? "bg-amber-500/20 text-amber-500 dark:text-amber-400 shadow-sm border border-amber-500/40 font-bold"
-                : "text-gospel-muted hover:text-amber-500"
+                ? "bg-amber-500/20 text-amber-700 dark:text-amber-300 shadow-sm border border-amber-500/40 font-bold"
+                : "text-gospel-muted hover:text-amber-600 dark:hover:text-amber-400"
             }`}
           >
-            <Sparkles className="w-3.5 h-3.5 text-amber-400" />
-            Kids Edition
+            <Sparkles className="w-3.5 h-3.5 text-amber-500" />
+            <span>Kids</span>
           </button>
         </nav>
 
         {/* Action controls */}
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
           {/* Translation selector */}
           <div className="flex items-center bg-gospel-surface border border-gospel-border rounded-lg p-0.5 text-xs font-semibold">
             {(["ESV", "NIV", "KJV"] as const).map((t) => (
               <button
                 key={t}
                 onClick={() => setTranslation(t)}
-                className={`px-2 py-1 rounded transition-colors ${
+                className={`px-1.5 sm:px-2 py-1 rounded transition-colors text-[11px] sm:text-xs ${
                   translation === t
-                    ? "bg-amber-500/20 text-amber-500 dark:text-amber-400 font-bold"
+                    ? "bg-amber-500/20 text-amber-700 dark:text-amber-300 font-bold"
                     : "text-gospel-muted hover:text-gospel-text"
                 }`}
                 title={`Switch translation to ${t}`}
@@ -133,18 +133,18 @@ export function Header({
           {/* Study Guide Link */}
           <Link
             href="/study"
-            className="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-amber-500/30 bg-amber-500/10 text-xs font-bold text-amber-400 hover:bg-amber-500 hover:text-slate-950 transition-all shadow-sm"
-            title="In-depth theological study and original language lexicon"
+            className="inline-flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-lg border border-amber-500/30 bg-amber-500/15 text-xs font-bold text-amber-700 dark:text-amber-300 hover:bg-amber-500 hover:text-slate-950 transition-all shadow-sm"
+            title="Read in-depth explanations and answers"
           >
             <BookOpen className="w-3.5 h-3.5" />
-            <span>Study Guide</span>
+            <span className="hidden sm:inline">Study Guide</span>
           </Link>
 
-          {/* Print Button */}
+          {/* Print Button (desktop only) */}
           <button
             onClick={handlePrint}
             title="Print One-Page Tract"
-            className="p-2 rounded-lg bg-gospel-surface border border-gospel-border text-gospel-muted hover:text-gospel-text hover:border-gospel-border-strong transition-all"
+            className="hidden lg:inline-flex p-2 rounded-lg bg-gospel-surface border border-gospel-border text-gospel-muted hover:text-gospel-text hover:border-gospel-border-strong transition-all"
           >
             <Printer className="w-4 h-4" />
           </button>
@@ -153,7 +153,7 @@ export function Header({
           <button
             onClick={handleShare}
             title="Share this Gospel summary"
-            className="p-2 rounded-lg bg-gospel-surface border border-gospel-border text-gospel-muted hover:text-gospel-text hover:border-gospel-border-strong transition-all relative"
+            className="p-1.5 sm:p-2 rounded-lg bg-gospel-surface border border-gospel-border text-gospel-muted hover:text-gospel-text hover:border-gospel-border-strong transition-all relative"
           >
             {copied ? (
               <Check className="w-4 h-4 text-emerald-500" />
@@ -166,7 +166,7 @@ export function Header({
           <button
             onClick={() => setTheme(resolvedTheme === "dark" ? "light" : "dark")}
             title="Toggle theme"
-            className="p-2 rounded-lg bg-gospel-surface border border-gospel-border text-gospel-muted hover:text-gospel-text hover:border-gospel-border-strong transition-all"
+            className="p-1.5 sm:p-2 rounded-lg bg-gospel-surface border border-gospel-border text-gospel-muted hover:text-gospel-text hover:border-gospel-border-strong transition-all"
           >
             {resolvedTheme === "dark" ? (
               <Sun className="w-4 h-4 text-amber-400" />
@@ -178,12 +178,12 @@ export function Header({
       </div>
 
       {/* Mobile Mode Switcher Subnav */}
-      <div className="md:hidden px-4 py-2 border-t border-gospel-border/50 flex items-center justify-around bg-gospel-surface/50 text-xs">
+      <div className="md:hidden px-3 py-2 border-t border-gospel-border flex items-center justify-between gap-1 bg-gospel-surface/90 text-xs overflow-x-auto no-scrollbar">
         <button
           onClick={() => setViewMode("narrative")}
-          className={`px-2.5 py-1 rounded-md ${
+          className={`px-2.5 py-1 rounded-lg text-xs font-semibold whitespace-nowrap transition-colors ${
             viewMode === "narrative"
-              ? "bg-gospel-surface-raised font-bold text-gospel-text"
+              ? "bg-gospel-surface-raised font-bold text-gospel-text border border-gospel-border-strong shadow-sm"
               : "text-gospel-muted"
           }`}
         >
@@ -191,9 +191,9 @@ export function Header({
         </button>
         <button
           onClick={() => setViewMode("bridge")}
-          className={`px-2.5 py-1 rounded-md ${
+          className={`px-2.5 py-1 rounded-lg text-xs font-semibold whitespace-nowrap transition-colors ${
             viewMode === "bridge"
-              ? "bg-gospel-surface-raised font-bold text-gospel-text"
+              ? "bg-gospel-surface-raised font-bold text-gospel-text border border-gospel-border-strong shadow-sm"
               : "text-gospel-muted"
           }`}
         >
@@ -201,9 +201,9 @@ export function Header({
         </button>
         <button
           onClick={() => setViewMode("tract")}
-          className={`px-2.5 py-1 rounded-md ${
+          className={`px-2.5 py-1 rounded-lg text-xs font-semibold whitespace-nowrap transition-colors ${
             viewMode === "tract"
-              ? "bg-gospel-surface-raised font-bold text-gospel-text"
+              ? "bg-gospel-surface-raised font-bold text-gospel-text border border-gospel-border-strong shadow-sm"
               : "text-gospel-muted"
           }`}
         >
@@ -211,17 +211,17 @@ export function Header({
         </button>
         <button
           onClick={() => setViewMode("kids")}
-          className={`px-2.5 py-1 rounded-md flex items-center gap-1 ${
+          className={`px-2.5 py-1 rounded-lg text-xs font-semibold whitespace-nowrap transition-colors flex items-center gap-1 ${
             viewMode === "kids"
-              ? "bg-amber-500/20 text-amber-500 font-bold"
-              : "text-gospel-muted hover:text-amber-500"
+              ? "bg-amber-500/20 text-amber-700 dark:text-amber-300 font-bold border border-amber-500/30"
+              : "text-gospel-muted hover:text-amber-600 dark:hover:text-amber-400"
           }`}
         >
           <span>Kids 🌟</span>
         </button>
         <Link
           href="/study"
-          className="px-2.5 py-1 rounded-md text-amber-400 hover:text-amber-300 font-semibold"
+          className="px-2.5 py-1 rounded-lg text-xs whitespace-nowrap text-amber-700 dark:text-amber-300 bg-amber-500/10 font-bold hover:bg-amber-500 hover:text-slate-950 transition-colors border border-amber-500/30"
         >
           Study 📖
         </Link>

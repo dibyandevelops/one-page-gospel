@@ -30,9 +30,9 @@ export default function HomePage() {
       <main className="flex-1 max-w-5xl mx-auto px-4 sm:px-6 w-full pt-8 pb-20 relative z-10">
         {/* Hero Section */}
         <section className="text-center pt-8 pb-10 max-w-3xl mx-auto no-print">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-amber-500/15 border border-amber-500/35 text-amber-400 text-xs font-bold uppercase tracking-widest mb-6 shadow-sm animate-fade-in-up">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-amber-500/15 border border-amber-500/35 text-amber-700 dark:text-amber-300 text-xs font-bold uppercase tracking-widest mb-6 shadow-sm animate-fade-in-up">
             <Sparkles className="w-3.5 h-3.5" />
-            {viewMode === "kids" ? "🌟 Kids & Youth Adventure" : "Clear • Faithful • Life-Transforming"}
+            {viewMode === "kids" ? "🌟 Kids & Family Adventure" : "Simple • Clear • Life-Changing"}
           </div>
 
           <h1 className="font-serif text-5xl sm:text-7xl font-extrabold tracking-tight leading-tight mb-5 drop-shadow-sm text-shimmer-gold animate-fade-in-up">
@@ -41,8 +41,8 @@ export default function HomePage() {
 
           <p className="text-lg sm:text-2xl text-gospel-muted leading-relaxed font-serif max-w-2xl mx-auto mb-8 animate-fade-in-up">
             {viewMode === "kids"
-              ? "An exciting, visual journey discovering how the King of Heaven made you, rescued you, and adopts you into His forever family."
-              : "The greatest news in human history: how a loving God rescues, redeems, and reconciles us to Himself through Jesus Christ."}
+              ? "An exciting visual story discovering how God made you, loves you, and invites you into His forever family!"
+              : "The greatest news in the world: how a loving God rescues us and brings us home into His family through Jesus Christ."}
           </p>
 
           {/* Mode Switch Helper Pill */}
@@ -50,7 +50,7 @@ export default function HomePage() {
             {viewMode !== "kids" ? (
               <button
                 onClick={() => setViewMode("kids")}
-                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-2xl bg-gradient-to-r from-amber-500/20 via-rose-500/15 to-amber-500/20 border border-amber-500/50 text-xs font-bold text-amber-300 hover:scale-105 transition-all shadow-[0_0_30px_rgba(245,158,11,0.2)]"
+                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-2xl bg-gradient-to-r from-amber-500/20 via-rose-500/15 to-amber-500/20 border border-amber-500/50 text-xs font-bold text-amber-800 dark:text-amber-300 hover:scale-105 transition-all shadow-[0_0_30px_rgba(245,158,11,0.2)]"
               >
                 <span>🌟 Switch to Kid-Friendly Edition</span>
                 <ArrowRight className="w-3.5 h-3.5" />
@@ -69,7 +69,7 @@ export default function HomePage() {
               className={`inline-flex items-center gap-2 px-4 py-2.5 rounded-2xl border text-xs font-bold transition-all ${
                 viewMode === "bridge"
                   ? "bg-amber-500 text-slate-950 border-amber-400 font-extrabold shadow-glow-gold"
-                  : "bg-gospel-surface border-gospel-border text-gospel-muted hover:text-amber-400"
+                  : "bg-gospel-surface border-gospel-border text-gospel-muted hover:text-amber-600 dark:hover:text-amber-400"
               }`}
             >
               <span>Explore The Bridge Artwork</span>
@@ -79,16 +79,16 @@ export default function HomePage() {
           {/* Quick Stats Badges */}
           <div className="flex flex-wrap items-center justify-center gap-3 text-xs font-medium text-gospel-muted">
             <span className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-gospel-surface border border-gospel-border shadow-sm">
-              <BookMarked className="w-4 h-4 text-amber-500" />
-              5 Core Truths
+              <BookMarked className="w-4 h-4 text-amber-600 dark:text-amber-400" />
+              5 Simple Truths
             </span>
             <span className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-gospel-surface border border-gospel-border shadow-sm">
-              <ShieldCheck className="w-4 h-4 text-emerald-500" />
+              <ShieldCheck className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
               Direct Scripture ({translation})
             </span>
             <span className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-gospel-surface border border-gospel-border shadow-sm">
-              <Heart className="w-4 h-4 text-rose-400 fill-rose-400/20" />
-              All Ages &amp; Families
+              <Heart className="w-4 h-4 text-rose-500 fill-rose-500/20" />
+              For All Ages &amp; Families
             </span>
           </div>
 
@@ -102,7 +102,7 @@ export default function HomePage() {
                 <a
                   key={step.id}
                   href={`#${step.id}`}
-                  className="px-3 py-1.5 rounded-xl bg-gospel-surface border border-gospel-border hover:border-amber-500/50 hover:text-amber-400 text-xs font-medium transition-all"
+                  className="px-3 py-1.5 rounded-xl bg-gospel-surface border border-gospel-border hover:border-amber-500/50 hover:text-amber-600 dark:hover:text-amber-400 text-xs font-medium transition-all"
                 >
                   {step.number}. {step.title.split(":")[0]}
                 </a>

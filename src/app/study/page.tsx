@@ -87,14 +87,14 @@ export default function StudyPage() {
           <div className="flex items-center gap-3">
             <Link
               href="/"
-              className="inline-flex items-center gap-1.5 text-xs font-semibold text-gospel-muted hover:text-amber-500 transition-colors"
+              className="inline-flex items-center gap-1.5 text-xs font-semibold text-gospel-muted hover:text-amber-600 dark:hover:text-amber-400 transition-colors"
             >
               <ArrowLeft className="w-3.5 h-3.5" />
               <span>Back to Visual Journey</span>
             </Link>
             <span className="text-gospel-border">|</span>
             <span className="font-serif font-bold text-sm tracking-tight hidden sm:inline text-gospel-text">
-              Theological Study Guide
+              Study Guide &amp; Answers
             </span>
           </div>
 
@@ -106,7 +106,7 @@ export default function StudyPage() {
                 type="text"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                placeholder="Search doctrines..."
+                placeholder="Search topics..."
                 className="w-full pl-8 pr-3 py-1 rounded-lg text-xs bg-gospel-surface border border-gospel-border focus:border-amber-500 focus:outline-none text-gospel-text placeholder:text-gospel-muted"
               />
             </div>
@@ -137,7 +137,7 @@ export default function StudyPage() {
       </header>
 
       {/* Main Layout Container */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 py-10 flex gap-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 py-8 sm:py-10 flex flex-col lg:flex-row gap-8 lg:gap-12">
         {/* Left Sticky Table of Contents (Desktop Sidebar) */}
         <aside className="w-64 shrink-0 hidden lg:block no-print">
           <div className="sticky top-20">
@@ -155,7 +155,7 @@ export default function StudyPage() {
                     href={`#${section.id}`}
                     className={`block px-3 py-2 rounded-lg text-xs font-medium transition-all ${
                       isActive
-                        ? "bg-amber-500/15 text-amber-500 font-bold border-l-2 border-amber-500 pl-2.5"
+                        ? "bg-amber-500/15 text-amber-700 dark:text-amber-300 font-bold border-l-2 border-amber-500 pl-2.5"
                         : "text-gospel-muted hover:text-gospel-text hover:bg-gospel-surface"
                     }`}
                   >
@@ -169,45 +169,67 @@ export default function StudyPage() {
             </nav>
 
             <div className="mt-8 pt-6 border-t border-gospel-border">
-              <div className="p-3.5 rounded-xl bg-gospel-surface border border-gospel-border text-xs text-gospel-muted">
+              <div className="p-3.5 rounded-xl bg-gospel-surface border border-gospel-border text-xs text-gospel-muted leading-relaxed">
                 <span className="font-bold text-gospel-text block mb-1">
-                  💡 Reader&apos;s Note
+                  💡 Plain Language Guide
                 </span>
-                This document is designed for thorough study, apologetic reference, and theological clarity.
+                Written in warm, understandable words so you can explore the Bible&apos;s biggest truths without confusing jargon.
               </div>
             </div>
           </div>
         </aside>
 
+        {/* Mobile Quick-Jump Nav Bar */}
+        <div className="lg:hidden no-print sticky top-14 z-30 -mx-4 px-4 py-2.5 bg-gospel-canvas/95 backdrop-blur-md border-b border-gospel-border shadow-sm">
+          <div className="flex items-center gap-2 overflow-x-auto no-scrollbar pb-1 text-xs">
+            <span className="text-[10px] uppercase font-bold text-gospel-muted shrink-0 mr-1">
+              Sections:
+            </span>
+            {STUDY_SECTIONS.map((section) => (
+              <a
+                key={section.id}
+                href={`#${section.id}`}
+                className={`px-3 py-1 rounded-lg shrink-0 font-medium transition-all ${
+                  activeSectionId === section.id
+                    ? "bg-amber-500 text-slate-950 font-bold shadow-sm"
+                    : "bg-gospel-surface border border-gospel-border text-gospel-muted"
+                }`}
+              >
+                {section.number}. {section.title.split(":")[0]}
+              </a>
+            ))}
+          </div>
+        </div>
+
         {/* Main Article Stream (Clean, Editorial, Distraction-Free Typography) */}
         <main className="flex-1 max-w-3xl mx-auto">
           {/* Document Header */}
-          <section className="mb-14 pb-8 border-b border-gospel-border">
+          <section className="mb-12 pb-8 border-b border-gospel-border">
             <div className="flex items-center gap-2 text-xs font-mono text-gospel-muted uppercase tracking-widest mb-3">
-              <span>Theology &amp; Doctrine</span>
+              <span>Plain-Language Study Guide</span>
               <span>•</span>
-              <span className="inline-flex items-center gap-1 text-amber-500 font-bold">
-                <Clock className="w-3 h-3" /> 15 Min In-Depth Read
+              <span className="inline-flex items-center gap-1 text-amber-700 dark:text-amber-400 font-bold">
+                <Clock className="w-3 h-3" /> 10 Min Clear Read
               </span>
             </div>
 
-            <h1 className="font-serif text-4xl sm:text-5xl font-extrabold tracking-tight text-gospel-text leading-tight mb-4">
-              The Architecture of the Gospel
+            <h1 className="font-serif text-3xl sm:text-5xl font-extrabold tracking-tight text-gospel-text leading-tight mb-4">
+              The Good News Explained
             </h1>
 
-            <p className="text-lg sm:text-xl text-gospel-muted font-serif italic leading-relaxed">
-              A comprehensive exposition of biblical soteriology, historical evidence, linguistic nuances, and theological foundations.
+            <p className="text-base sm:text-xl text-gospel-muted font-serif italic leading-relaxed">
+              A clear, honest guide to the Bible&apos;s story, evidence, and answers to common questions.
             </p>
           </section>
 
           {/* Study Sections Stream */}
           <div className="space-y-16">
             {filteredSections.map((section) => (
-              <article key={section.id} id={section.id} className="scroll-mt-20">
+              <article key={section.id} id={section.id} className="scroll-mt-28 sm:scroll-mt-20">
                 {/* Section Header */}
                 <div className="mb-6">
-                  <span className="text-xs font-mono font-bold text-amber-500 tracking-wider uppercase block mb-1">
-                    Section {section.number}
+                  <span className="text-xs font-mono font-bold text-amber-700 dark:text-amber-400 tracking-wider uppercase block mb-1">
+                    Part {section.number}
                   </span>
                   <h2 className="font-serif text-2xl sm:text-3xl font-bold text-gospel-text tracking-tight">
                     {section.title}
@@ -231,7 +253,7 @@ export default function StudyPage() {
                         className="rounded-xl p-5 bg-gospel-surface-raised border border-gospel-border"
                       >
                         <div className="flex items-center justify-between gap-2 mb-2">
-                          <span className="text-xs font-mono font-bold text-amber-500">
+                          <span className="text-xs font-mono font-bold text-amber-700 dark:text-amber-400">
                             {sp.reference}
                           </span>
                           <button
@@ -250,7 +272,7 @@ export default function StudyPage() {
                           &ldquo;{sp.text}&rdquo;
                         </blockquote>
                         <p className="text-xs text-gospel-muted border-t border-gospel-border pt-2.5">
-                          <strong className="text-gospel-text/80">Theological Context:</strong> {sp.theologicalNote}
+                          <strong className="text-gospel-text/80">Context Note:</strong> {sp.theologicalNote}
                         </p>
                       </div>
                     ))}
@@ -268,8 +290,8 @@ export default function StudyPage() {
 
                 {/* Historical Context Note if present */}
                 {section.historicalContext && (
-                  <div className="my-6 p-4 rounded-xl bg-sky-500/5 border border-sky-500/20 text-xs sm:text-sm text-gospel-text/85">
-                    <strong className="text-sky-400 block mb-1">📜 Historical &amp; Cultural Backdrop:</strong>
+                  <div className="my-6 p-4 rounded-xl bg-sky-500/10 border border-sky-500/20 text-xs sm:text-sm text-gospel-text/90">
+                    <strong className="text-sky-700 dark:text-sky-400 block mb-1 font-bold">📜 Historical &amp; Cultural Backdrop:</strong>
                     {section.historicalContext}
                   </div>
                 )}
@@ -293,7 +315,7 @@ export default function StudyPage() {
                 {section.faqs && section.faqs.length > 0 && (
                   <div className="mt-8 pt-6 border-t border-gospel-border/80">
                     <h3 className="font-serif text-lg font-bold text-gospel-text mb-4">
-                      Frequently Addressed Questions
+                      Frequently Asked Questions
                     </h3>
                     <div className="space-y-3">
                       {section.faqs.map((faq, fIdx) => {
@@ -339,17 +361,17 @@ export default function StudyPage() {
                           <span className="font-serif font-bold text-base text-gospel-text">
                             {entry.term}
                           </span>
-                          <span className="font-serif text-lg text-amber-500 font-normal">
+                          <span className="font-serif text-lg text-amber-600 dark:text-amber-400 font-normal">
                             {entry.original}
                           </span>
                         </div>
                         <div className="text-[11px] font-mono text-gospel-muted mb-2">
                           <span>{entry.language}</span> • <span>/{entry.transliteration}/</span>
                         </div>
-                        <p className="text-xs text-gospel-text/80 leading-relaxed mb-3">
+                        <p className="text-xs text-gospel-text/90 leading-relaxed mb-3">
                           {entry.definition}
                         </p>
-                        <span className="text-[10px] font-mono text-amber-500 block">
+                        <span className="text-[10px] font-mono text-amber-700 dark:text-amber-400 font-bold block">
                           Ref: {entry.scriptureReference}
                         </span>
                       </div>

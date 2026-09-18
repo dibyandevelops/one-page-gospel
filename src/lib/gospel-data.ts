@@ -27,10 +27,10 @@ export const GOSPEL_STEPS: GospelStep[] = [
   {
     id: "creation-purpose",
     number: 1,
-    title: "God's Design & Creation",
-    subtitle: "Created for Purpose and Relationship",
+    title: "God's Design & Love",
+    subtitle: "Made on Purpose, with Deep Love",
     summary:
-      "God created the universe with beauty, order, and purpose. Human beings were lovingly formed in God's own image to live in joy, purpose, and unbroken communion with their Creator.",
+      "God made our world full of beauty, wonder, and life. He created each of us in His own image so we could know Him personally, walk with Him, and live with real joy, peace, and purpose.",
     image: "/images/creation.jpg",
     themeColor: "emerald",
     iconName: "Sparkles",
@@ -41,7 +41,7 @@ export const GOSPEL_STEPS: GospelStep[] = [
         NIV: "So God created mankind in his own image, in the image of God he created them; male and female he created them... God saw all that he had made, and it was very good.",
         KJV: "So God created man in his own image, in the image of God created he him; male and female created he them... And God saw every thing that he had made, and, behold, it was very good.",
       },
-      contextNote: "God's original design was free from suffering, decay, brokenness, and guilt.",
+      contextNote: "God's original design was full of peace, beauty, and close friendship with Him.",
     },
     supplementaryVerses: [
       {
@@ -62,19 +62,19 @@ export const GOSPEL_STEPS: GospelStep[] = [
       },
     ],
     takeawayPoints: [
-      "You are not an accident; your existence is intentional.",
-      "Life's deepest fulfillment is found in relationship with your Creator.",
-      "Every person possesses inherent worth, dignity, and divine purpose.",
+      "You are not an accident; God made you on purpose.",
+      "Real joy and lasting peace come from knowing your Creator.",
+      "Every person is deeply valuable and loved by God.",
     ],
-    reflectionQuestion: "What does knowing you were intentionally made with purpose change about how you see yourself?",
+    reflectionQuestion: "How does it feel to know that God made you on purpose and wants to walk with you?",
   },
   {
     id: "the-fall-separation",
     number: 2,
-    title: "The Broken World & Separation",
-    subtitle: "The Problem of Sin and Distance from God",
+    title: "The Broken World & The Gap",
+    subtitle: "Choosing Our Own Way and Missing God",
     summary:
-      "Mankind turned away from God, choosing autonomy and self-will. This rebellion (called sin) fractured the harmony between humanity and God, bringing spiritual death, shame, guilt, and the brokenness we experience around us and inside ourselves.",
+      "Instead of trusting God's good guidance, humanity chose to go our own way and live without Him. The Bible calls this 'sin'—turning away from God. This broke our friendship with God, bringing sadness, guilt, and the brokenness we see in our world and feel in our hearts.",
     image: "/images/chasm.jpg",
     themeColor: "crimson",
     iconName: "AlertCircle",
@@ -85,7 +85,7 @@ export const GOSPEL_STEPS: GospelStep[] = [
         NIV: "For all have sinned and fall short of the glory of God.",
         KJV: "For all have sinned, and come short of the glory of God.",
       },
-      contextNote: "Sin is not just extreme misconduct; it is missing the mark of God's perfect love and righteousness.",
+      contextNote: "Sin isn't just big mistakes; it means missing God's standard of love and trying to run life on our own.",
     },
     supplementaryVerses: [
       {
@@ -106,19 +106,19 @@ export const GOSPEL_STEPS: GospelStep[] = [
       },
     ],
     takeawayPoints: [
-      "No amount of human effort, moral living, or religion can bridge the infinite gap to God.",
-      "Sin creates separation from the Source of life, peace, and truth.",
-      "Facing our brokenness honestly is the essential first step to genuine healing.",
+      "No amount of good deeds or trying harder can bridge the gap to God on our own.",
+      "Sin separates our hearts from God, the true source of life and peace.",
+      "Being honest about our need for help is the first step toward healing.",
     ],
-    reflectionQuestion: "Where do you recognize the human tendency to want to run life independently from God?",
+    reflectionQuestion: "Where do you see the urge to say, 'I want to run my life my own way without God'?",
   },
   {
     id: "the-cross-redemption",
     number: 3,
     title: "The Bridge: Jesus Christ",
-    subtitle: "God's Grace and Sacrificial Love",
+    subtitle: "God's Rescue Mission of Pure Love",
     summary:
-      "Because humanity could not climb up to God, God came down to us in the person of Jesus Christ. Fully God and fully human, Jesus lived a sinless life, willingly died on the cross as our substitute bearing our penalty, and physically rose again on the third day, conquering death forever.",
+      "We could never reach up to God on our own, so God came down to us in Jesus Christ. Jesus lived a life of perfect love, willingly gave His life on the cross to take the punishment for our wrongs, and rose back to life on the third day. Because He lives, death is defeated and the way back to God is wide open!",
     image: "/images/cross-bridge.jpg",
     themeColor: "gold",
     iconName: "Cross",
@@ -129,7 +129,7 @@ export const GOSPEL_STEPS: GospelStep[] = [
         NIV: "But God demonstrates his own love for us in this: While we were still sinners, Christ died for us.",
         KJV: "But God commendeth his love toward us, in that, while we were yet sinners, Christ died for us.",
       },
-      contextNote: "God did not wait for us to clean ourselves up; His love met us at our lowest point.",
+      contextNote: "God didn't wait for us to fix ourselves first; His love reached out to us at our lowest point.",
     },
     supplementaryVerses: [
       {
@@ -150,19 +150,19 @@ export const GOSPEL_STEPS: GospelStep[] = [
       },
     ],
     takeawayPoints: [
-      "Jesus bridges the chasm between holy God and fallen humanity.",
-      "The cross demonstrates God's perfect justice and infinite mercy in one moment.",
-      "The resurrection is historical evidence of victory over sin and physical death.",
+      "Jesus built the bridge across the gap between us and God.",
+      "On the cross, Jesus took what we owed so we could be completely forgiven.",
+      "Jesus rising from the dead is proof that God's love wins over death.",
     ],
-    reflectionQuestion: "What does it mean to you that Jesus died for us even before we sought Him?",
+    reflectionQuestion: "What does it mean to your heart that Jesus gave His life for you before you even asked?",
   },
   {
     id: "the-gift-faith",
     number: 4,
     title: "The Response: Faith & Grace",
-    subtitle: "A Free Gift to Be Received, Not Earned",
+    subtitle: "A Free Gift to Receive, Not Work to Earn",
     summary:
-      "Salvation is not earned by rituals, good deeds, or family heritage. It is a free gift received through faith: turning from our self-directed ways (repentance) and trusting in Jesus Christ alone as Savior and Lord of our lives.",
+      "Being right with God is not something you earn with good deeds, religious rules, or being 'good enough.' It is a free gift given out of pure love. We receive this gift simply by trusting Jesus—turning our hearts back to God and putting our lives in His hands.",
     image: "/images/grace-gift.jpg",
     themeColor: "blue",
     iconName: "HeartHandshake",
@@ -173,7 +173,7 @@ export const GOSPEL_STEPS: GospelStep[] = [
         NIV: "For it is by grace you have been saved, through faith—and this is not from yourselves, it is the gift of God—not by works, so that no one can boast.",
         KJV: "For by grace are ye saved through faith; and that not of yourselves: it is the gift of God: Not of works, lest any man should boast.",
       },
-      contextNote: "Grace means unmerited favor. You cannot buy a gift that has already been fully paid for.",
+      contextNote: "Grace means a gift given out of pure kindness. You cannot buy a gift that is already paid for.",
     },
     supplementaryVerses: [
       {
@@ -194,19 +194,19 @@ export const GOSPEL_STEPS: GospelStep[] = [
       },
     ],
     takeawayPoints: [
-      "Faith is personal trust and allegiance, not mere intellectual agreement.",
-      "You can be confident in your standing before God based on what Christ did, not your performance.",
-      "The door of adoption into God's family is open to anyone who calls on His name.",
+      "Faith means placing your real, daily trust in Jesus as your Savior and Friend.",
+      "You are accepted by God because of what Jesus did, not how good you perform.",
+      "Anyone who calls on the name of the Lord is warmly welcomed into God's family.",
     ],
-    reflectionQuestion: "Are you relying on your own efforts to be right with God, or resting in what Christ has done?",
+    reflectionQuestion: "Are you still trying to be 'good enough' on your own, or are you ready to rest in God's gift?",
   },
   {
     id: "new-life-restoration",
     number: 5,
-    title: "New Life & Walking Forward",
-    subtitle: "Transformed Heart, Eternal Hope",
+    title: "New Life: Walking with God",
+    subtitle: "A Fresh Start, Real Hope, and a Forever Home",
     summary:
-      "Trusting Christ is not the end; it is the beginning of a lifelong adventure. You receive the Holy Spirit, forgiveness of all sins past, present, and future, the assurance of eternal life, and a renewed purpose to love and serve God and others.",
+      "Trusting Jesus is not the end; it is the start of a wonderful lifelong journey! God forgives every wrong, gives you His Holy Spirit to guide and comfort you every day, and gives you real hope today and eternal life with Him forever.",
     image: "/images/new-life.jpg",
     themeColor: "amber",
     iconName: "Compass",
@@ -217,7 +217,7 @@ export const GOSPEL_STEPS: GospelStep[] = [
         NIV: "Therefore, if anyone is in Christ, the new creation has come: The old has gone, the new is here!",
         KJV: "Therefore if any man be in Christ, he is a new creature: old things are passed away; behold, all things are become new.",
       },
-      contextNote: "A new creation receives a new identity, new desires, and a secure eternal future with God.",
+      contextNote: "In Jesus, you get a clean slate, a new heart, and a safe future with God forever.",
     },
     supplementaryVerses: [
       {
@@ -238,39 +238,39 @@ export const GOSPEL_STEPS: GospelStep[] = [
       },
     ],
     takeawayPoints: [
-      "You are sealed with the Holy Spirit and given a real, permanent hope.",
-      "Growth happens gradually in community through prayer, scripture, and fellowship.",
-      "Nothing can separate a child of God from His love.",
+      "You are never alone; God's Spirit is with you to give you peace and courage.",
+      "Growing with God happens one step at a time through prayer, the Bible, and good friends.",
+      "Nothing in the entire universe can ever separate you from God's love.",
     ],
-    reflectionQuestion: "What would taking your first step in faith look like today?",
+    reflectionQuestion: "What is one simple step of trust you can take with God today?",
   },
 ];
 
 export const SAMPLE_PRAYER = {
-  title: "A Prayer of Faith & Commitment",
-  lead: "God looks at the genuine posture of your heart rather than exact words. If this expresses your desire, you can pray a prayer like this:",
-  text: "Lord Jesus, I acknowledge that I have lived for myself and sinned against You. I cannot save myself by my good works. I believe You died on the cross in my place and rose again to conquer sin and death. Today, I turn to You in trust. I ask You to forgive my sins, come into my life, and lead me as my Savior and Lord. Thank You for Your free gift of eternal life and new beginnings. In Your name, Amen.",
+  title: "A Simple Prayer of Faith",
+  lead: "God cares about the honesty of your heart, not fancy words. If this prayer expresses what you want, you can speak to Him right now:",
+  text: "Lord Jesus, thank You for loving me. I know I have made mistakes and tried to live my own way without You. I cannot save myself. I believe You died on the cross for my sins and rose back to life. Today, I put my trust in You. Please forgive me, give me a new heart, and lead my life from this day forward. Thank You for Your free gift of new life. In Your name, Amen.",
 };
 
 export const NEXT_STEPS = [
   {
     step: 1,
-    title: "Talk to God Daily (Prayer)",
-    description: "Prayer is simply an honest, open conversation with the God who loves you. Speak to Him anytime, anywhere.",
+    title: "Talk to God Every Day (Prayer)",
+    description: "Prayer is just an honest, relaxed talk with God who loves you. You can talk to Him anytime, anywhere, about anything on your mind.",
   },
   {
     step: 2,
-    title: "Read the Scriptures (Bible)",
-    description: "Start with the Gospel of John or Mark in the New Testament to discover more about Jesus' words and deeds.",
+    title: "Read the Bible to Get to Know Jesus",
+    description: "Start with the Gospel of Mark or John in the New Testament to see how Jesus loved people, what He taught, and what He did.",
   },
   {
     step: 3,
-    title: "Connect with a Healthy Church Community",
-    description: "Christianity was never meant to be lived alone. Join a Christ-centered, Bible-teaching church where you can grow.",
+    title: "Find Good Friends at a Church",
+    description: "We are meant to grow together. Find a welcoming, Bible-believing church family where you can learn, ask questions, and be encouraged.",
   },
   {
     step: 4,
-    title: "Share Your Faith with Others",
-    description: "Tell a trusted friend, family member, or believer about the decision or discovery you have made.",
+    title: "Share Your Story with Someone",
+    description: "Tell a friend or family member about the choice you made to follow Jesus and how He is helping you.",
   },
 ];
