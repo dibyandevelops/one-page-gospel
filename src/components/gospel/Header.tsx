@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
-import { BookOpen, Moon, Sun, Printer, Share2, Check, Compass, Sparkles } from "lucide-react";
+import { BookOpen, Moon, Sun, Printer, Share2, Check, Compass, Sparkles, AlertTriangle, ChevronDown } from "lucide-react";
 import { useTheme } from "@/components/theme-provider";
 
 export type ViewMode = "narrative" | "bridge" | "tract" | "kids";
@@ -23,6 +23,7 @@ export function Header({
 }: HeaderProps) {
   const { resolvedTheme, setTheme } = useTheme();
   const [copied, setCopied] = useState(false);
+  const [exploreOpen, setExploreOpen] = useState(false);
 
   const handleShare = async () => {
     if (navigator.share) {
@@ -130,15 +131,56 @@ export function Header({
             ))}
           </div>
 
-          {/* Study Guide Link */}
-          <Link
-            href="/study"
-            className="inline-flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-lg border border-amber-500/30 bg-amber-500/15 text-xs font-bold text-amber-700 dark:text-amber-300 hover:bg-amber-500 hover:text-slate-950 transition-all shadow-sm"
-            title="Read in-depth explanations and answers"
-          >
-            <BookOpen className="w-3.5 h-3.5" />
-            <span className="hidden sm:inline">Study Guide</span>
-          </Link>
+          {/* Explore Dropdown */}
+          <div className="relative">
+            <button
+              onClick={() => setExploreOpen(!exploreOpen)}
+              className="inline-flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-lg border border-amber-500/30 bg-amber-500/15 text-xs font-bold text-amber-700 dark:text-amber-300 hover:bg-amber-500 hover:text-slate-950 transition-all shadow-sm"
+              title="Explore in-depth biblical topics"
+            >
+              <Compass className="w-3.5 h-3.5" />
+              <span>Explore</span>
+              <ChevronDown className={`w-3 h-3 transition-transform ${exploreOpen ? "rotate-180" : ""}`} />
+            </button>
+
+            {exploreOpen && (
+              <div className="absolute right-0 mt-2 w-52 rounded-2xl bg-gospel-surface-raised border border-gospel-border-strong shadow-2xl p-2 z-50 animate-fade-in-up">
+                <Link
+                  href="/the-problem"
+                  onClick={() => setExploreOpen(false)}
+                  className="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-bold hover:bg-rose-500/15 text-rose-600 dark:text-rose-400 transition-colors"
+                >
+                  <AlertTriangle className="w-3.5 h-3.5 text-rose-500" />
+                  <span>The Problem</span>
+                </Link>
+                <Link
+                  href="/miracles"
+                  onClick={() => setExploreOpen(false)}
+                  className="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-bold hover:bg-amber-500/15 text-amber-600 dark:text-amber-400 transition-colors"
+                >
+                  <Sparkles className="w-3.5 h-3.5 text-amber-500" />
+                  <span>Miracles of Jesus</span>
+                </Link>
+                <Link
+                  href="/parables"
+                  onClick={() => setExploreOpen(false)}
+                  className="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-bold hover:bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 transition-colors"
+                >
+                  <Compass className="w-3.5 h-3.5 text-emerald-500" />
+                  <span>Parables &amp; Meaning</span>
+                </Link>
+                <div className="my-1 border-t border-gospel-border" />
+                <Link
+                  href="/study"
+                  onClick={() => setExploreOpen(false)}
+                  className="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-bold hover:bg-amber-500/15 text-amber-700 dark:text-amber-300 transition-colors"
+                >
+                  <BookOpen className="w-3.5 h-3.5 text-amber-500" />
+                  <span>Full Study Guide</span>
+                </Link>
+              </div>
+            )}
+          </div>
 
           {/* Print Button (desktop only) */}
           <button
@@ -219,6 +261,24 @@ export function Header({
         >
           <span>Kids 🌟</span>
         </button>
+        <Link
+          href="/the-problem"
+          className="px-2.5 py-1 rounded-lg text-xs whitespace-nowrap text-rose-600 dark:text-rose-400 bg-rose-500/10 font-bold hover:bg-rose-500 hover:text-white transition-colors border border-rose-500/30"
+        >
+          Problem
+        </Link>
+        <Link
+          href="/miracles"
+          className="px-2.5 py-1 rounded-lg text-xs whitespace-nowrap text-amber-700 dark:text-amber-300 bg-amber-500/10 font-bold hover:bg-amber-500 hover:text-slate-950 transition-colors border border-amber-500/30"
+        >
+          Miracles
+        </Link>
+        <Link
+          href="/parables"
+          className="px-2.5 py-1 rounded-lg text-xs whitespace-nowrap text-emerald-700 dark:text-emerald-300 bg-emerald-500/10 font-bold hover:bg-emerald-500 hover:text-slate-950 transition-colors border border-emerald-500/30"
+        >
+          Parables
+        </Link>
         <Link
           href="/study"
           className="px-2.5 py-1 rounded-lg text-xs whitespace-nowrap text-amber-700 dark:text-amber-300 bg-amber-500/10 font-bold hover:bg-amber-500 hover:text-slate-950 transition-colors border border-amber-500/30"
