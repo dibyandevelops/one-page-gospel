@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import Link from "next/link";
 import { BookOpen, Moon, Sun, Printer, Share2, Check, Compass, Sparkles } from "lucide-react";
 import { useTheme } from "@/components/theme-provider";
 
@@ -129,6 +130,16 @@ export function Header({
             ))}
           </div>
 
+          {/* Study Guide Link */}
+          <Link
+            href="/study"
+            className="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-amber-500/30 bg-amber-500/10 text-xs font-bold text-amber-400 hover:bg-amber-500 hover:text-slate-950 transition-all shadow-sm"
+            title="In-depth theological study and original language lexicon"
+          >
+            <BookOpen className="w-3.5 h-3.5" />
+            <span>Study Guide</span>
+          </Link>
+
           {/* Print Button */}
           <button
             onClick={handlePrint}
@@ -208,6 +219,12 @@ export function Header({
         >
           <span>Kids 🌟</span>
         </button>
+        <Link
+          href="/study"
+          className="px-2.5 py-1 rounded-md text-amber-400 hover:text-amber-300 font-semibold"
+        >
+          Study 📖
+        </Link>
       </div>
     </header>
   );
