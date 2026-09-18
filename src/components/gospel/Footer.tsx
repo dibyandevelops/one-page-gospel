@@ -10,7 +10,7 @@ export function Footer() {
             <BookOpen className="w-4 h-4" />
           </div>
           <div>
-            <span className="font-serif font-bold text-sm text-gospel-text">
+            <span className="font-display font-extrabold text-sm text-gospel-text tracking-tight">
               One Page Gospel
             </span>
             <p className="text-xs text-gospel-muted">

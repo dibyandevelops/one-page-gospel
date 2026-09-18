@@ -92,7 +92,7 @@ export function BridgeIllustration({ translation }: BridgeProps) {
           <Sparkles className="w-3.5 h-3.5" />
           Interactive Visual Story
         </span>
-        <h2 className="font-serif text-2xl sm:text-5xl font-bold text-gospel-text tracking-tight">
+        <h2 className="font-display text-3xl sm:text-5xl font-extrabold text-gospel-text tracking-tight">
           The Bridge to Eternal Life
         </h2>
         <p className="text-xs sm:text-base text-gospel-muted mt-2">
@@ -101,7 +101,7 @@ export function BridgeIllustration({ translation }: BridgeProps) {
       </div>
 
       {/* Cinematic Artwork with Interactive Hotspots */}
-      <div className="relative rounded-2xl overflow-hidden border-2 border-amber-500/30 shadow-2xl mb-4 sm:mb-8 group">
+      <div className="relative rounded-3xl overflow-hidden border-2 border-amber-500/30 shadow-2xl mb-4 sm:mb-8 group">
         <div className="relative h-64 sm:h-[420px] w-full">
           <Image
             src="/images/cross-bridge.jpg"
@@ -168,11 +168,11 @@ export function BridgeIllustration({ translation }: BridgeProps) {
       </div>
 
       {/* Selected Step Explanation Card */}
-      <div className="rounded-2xl p-6 sm:p-8 bg-gospel-surface-raised border border-gospel-border-strong animate-fade-in-up">
+      <div className="rounded-2xl p-6 sm:p-8 bg-gospel-surface-raised/80 backdrop-blur-md border border-gospel-border-strong animate-fade-in-up shadow-sm">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4">
           <div className="flex items-center gap-3">
-            <span className="w-3 h-3 rounded-full bg-amber-500 animate-ping" />
-            <h3 className="font-serif text-xl sm:text-2xl font-bold text-gospel-text">
+            <span className="w-2.5 h-2.5 rounded-full bg-amber-500 animate-pulse" />
+            <h3 className="font-display text-xl sm:text-2xl font-bold text-gospel-text tracking-tight">
               {descriptions[activeStep].title}
             </h3>
           </div>
@@ -197,7 +197,7 @@ export function BridgeIllustration({ translation }: BridgeProps) {
           </div>
         </div>
 
-        <blockquote className="font-serif text-lg sm:text-xl italic text-gospel-text pl-4 border-l-4 border-amber-500 my-4 leading-relaxed">
+        <blockquote className="text-lg sm:text-xl italic text-gospel-text pl-4 border-l-2 border-amber-500 my-4 leading-relaxed">
           &ldquo;{descriptions[activeStep].text[translation]}&rdquo;
         </blockquote>
 

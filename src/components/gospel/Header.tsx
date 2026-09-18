@@ -55,10 +55,10 @@ export function Header({
             <BookOpen className="w-5 h-5" />
           </div>
           <div>
-            <span className="font-serif text-base sm:text-lg font-bold tracking-tight text-gospel-text block leading-none">
+            <span className="font-display text-base sm:text-lg font-extrabold tracking-tight text-gospel-text block leading-none">
               One Page Gospel
             </span>
-            <span className="text-[10px] text-gospel-muted hidden sm:block mt-0.5">
+            <span className="text-[10px] text-gospel-muted hidden sm:block mt-0.5 font-medium">
               The Good News in Plain Words
             </span>
           </div>

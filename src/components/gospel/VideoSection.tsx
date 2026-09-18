@@ -21,7 +21,7 @@ export function VideoSection({ isKidsMode = false }: VideoSectionProps) {
           <Sparkles className="w-3.5 h-3.5" />
           {isKidsMode ? "🎬 60-Second Animated Video" : "🎬 Visual Spotlight"}
         </div>
-        <h2 className="font-serif text-3xl sm:text-4xl font-bold text-gospel-text tracking-tight">
+        <h2 className="font-display text-3xl sm:text-4xl font-extrabold text-gospel-text tracking-tight">
           {isKidsMode ? "Watch: The Gospel in One Minute!" : "The Gospel In One Minute"}
         </h2>
         <p className="text-xs sm:text-sm text-gospel-muted mt-2 flex items-center justify-center gap-2">

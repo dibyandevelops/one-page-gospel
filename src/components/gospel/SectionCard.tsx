@@ -89,10 +89,10 @@ export function SectionCard({ step, translation }: SectionCardProps) {
   return (
     <article
       id={step.id}
-      className={`rounded-3xl overflow-hidden bg-gospel-surface border transition-all duration-300 ${getThemeGlow()}`}
+      className={`rounded-3xl overflow-hidden bg-gospel-surface border modern-card-hover transition-all duration-300 shadow-soft-card ${getThemeGlow()}`}
     >
       {/* Cinematic Image Header */}
-      <div className="relative h-60 sm:h-80 w-full overflow-hidden group">
+      <div className="relative h-64 sm:h-84 w-full overflow-hidden group">
         <Image
           src={step.image}
           alt={step.title}
@@ -101,7 +101,7 @@ export function SectionCard({ step, translation }: SectionCardProps) {
           className="object-cover transition-transform duration-700 group-hover:scale-105"
         />
         {/* Cinematic Gradient Overlays */}
-        <div className="absolute inset-0 bg-gradient-to-t from-gospel-surface via-gospel-surface/40 to-black/30" />
+        <div className="absolute inset-0 bg-gradient-to-t from-gospel-surface via-gospel-surface/30 to-black/25" />
 
         {/* Floating Step Badge on top of image */}
         <div className="absolute top-4 left-4 sm:top-6 sm:left-6 flex items-center gap-3">
@@ -117,7 +117,7 @@ export function SectionCard({ step, translation }: SectionCardProps) {
 
         {/* Title over gradient bottom */}
         <div className="absolute bottom-4 left-4 right-4 sm:bottom-6 sm:left-6 sm:right-6">
-          <h2 className="font-serif text-2xl sm:text-4xl font-bold text-white drop-shadow-md tracking-tight">
+          <h2 className="font-display text-2xl sm:text-4xl font-extrabold text-white drop-shadow-md tracking-tight">
             {step.title}
           </h2>
         </div>
@@ -131,14 +131,14 @@ export function SectionCard({ step, translation }: SectionCardProps) {
         </p>
 
         {/* Key Scripture Quote Block */}
-        <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-gospel-surface-raised via-gospel-surface-raised/90 to-gospel-surface border border-gospel-border-strong p-6 sm:p-8 mb-8 shadow-inner">
+        <div className="relative overflow-hidden rounded-2xl bg-gospel-surface-raised/80 backdrop-blur-md border border-gospel-border-strong p-6 sm:p-8 mb-8 shadow-sm">
           <div className="flex items-center justify-between gap-2 mb-3">
             <div className="flex items-center gap-2">
-              <span className="text-xs font-bold uppercase tracking-wider text-amber-500 flex items-center gap-1.5">
+              <span className="text-xs font-bold uppercase tracking-wider text-amber-600 dark:text-amber-400 flex items-center gap-1.5">
                 <BookMarked className="w-4 h-4" />
                 Key Scripture ({translation})
               </span>
-              <span className="text-xs font-semibold text-gospel-muted font-mono bg-gospel-surface px-2 py-0.5 rounded border border-gospel-border">
+              <span className="text-xs font-semibold text-gospel-muted font-mono bg-gospel-surface px-2 py-0.5 rounded-lg border border-gospel-border">
                 {step.keyVerse.reference}
               </span>
             </div>
@@ -165,13 +165,13 @@ export function SectionCard({ step, translation }: SectionCardProps) {
             </button>
           </div>
 
-          <blockquote className="font-serif text-xl sm:text-2xl italic text-gospel-text leading-relaxed pl-4 border-l-4 border-amber-500 my-4">
+          <blockquote className="text-lg sm:text-xl font-normal italic text-gospel-text leading-relaxed pl-4 border-l-2 border-amber-500 my-4">
             &ldquo;{step.keyVerse.translations[translation]}&rdquo;
           </blockquote>
 
           {step.keyVerse.contextNote && (
-            <p className="text-xs text-gospel-muted mt-3 italic pl-4">
-              💡 {step.keyVerse.contextNote}
+            <p className="text-xs text-gospel-muted mt-3 pl-4 flex items-center gap-1.5">
+              <span className="text-amber-500">💡</span> {step.keyVerse.contextNote}
             </p>
           )}
 
@@ -200,7 +200,7 @@ export function SectionCard({ step, translation }: SectionCardProps) {
                       <p className="font-semibold text-xs text-amber-700 dark:text-amber-300 font-mono mb-0.5">
                         {sv.reference}
                       </p>
-                      <p className="text-gospel-muted italic font-serif text-sm">
+                      <p className="text-gospel-muted italic text-sm">
                         &ldquo;{sv.translations[translation]}&rdquo;
                       </p>
                     </div>
@@ -214,28 +214,31 @@ export function SectionCard({ step, translation }: SectionCardProps) {
         {/* Takeaways & Reflection */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
           {/* Takeaway points */}
-          <div className="rounded-2xl p-5 bg-gospel-surface-raised/60 border border-gospel-border">
-            <h3 className="text-xs font-bold uppercase tracking-wider text-gospel-muted mb-3">
-              Key Insights
-            </h3>
-            <ul className="space-y-2.5">
-              {step.takeawayPoints.map((point, idx) => (
-                <li key={idx} className="flex items-start gap-2.5 text-sm text-gospel-text/90">
-                  <CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0 mt-0.5" />
-                  <span>{point}</span>
-                </li>
-              ))}
-            </ul>
+          <div className="rounded-2xl p-6 bg-gospel-surface-raised/70 border border-gospel-border shadow-sm flex flex-col justify-between">
+            <div>
+              <h3 className="text-xs font-bold uppercase tracking-wider text-gospel-muted mb-3 flex items-center gap-1.5">
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
+                Key Insights
+              </h3>
+              <ul className="space-y-3">
+                {step.takeawayPoints.map((point, idx) => (
+                  <li key={idx} className="flex items-start gap-2.5 text-sm text-gospel-text/90 leading-normal">
+                    <CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0 mt-0.5" />
+                    <span>{point}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
 
           {/* Personal Reflection */}
-          <div className="rounded-2xl p-5 bg-gradient-to-br from-amber-500/10 to-transparent border border-amber-500/30 flex flex-col justify-between">
+          <div className="rounded-2xl p-6 bg-gradient-to-br from-amber-500/10 via-amber-500/5 to-transparent border border-amber-500/25 shadow-sm flex flex-col justify-between">
             <div>
-              <div className="flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-amber-700 dark:text-amber-400 mb-2.5">
+              <div className="flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-amber-700 dark:text-amber-400 mb-3">
                 <HelpCircle className="w-4 h-4" />
                 Heart Reflection
               </div>
-              <p className="text-base italic text-gospel-text font-serif leading-relaxed">
+              <p className="text-base sm:text-lg text-gospel-text leading-relaxed font-medium">
                 &ldquo;{step.reflectionQuestion}&rdquo;
               </p>
             </div>

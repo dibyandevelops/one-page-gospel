@@ -27,17 +27,20 @@ const config: Config = {
       },
       fontFamily: {
         sans: ["var(--font-sans)", "system-ui", "sans-serif"],
-        serif: ["var(--font-serif)", "Georgia", "serif"],
+        display: ["var(--font-display)", "var(--font-sans)", "sans-serif"],
+        serif: ["var(--font-display)", "var(--font-sans)", "system-ui", "sans-serif"],
         mono: ["var(--font-mono)", "monospace"],
       },
       borderRadius: {
         app: "16px",
         "app-lg": "24px",
+        "app-xl": "32px",
       },
       boxShadow: {
-        "soft-card": "0 10px 30px -10px rgba(0, 0, 0, 0.08)",
-        "glow-gold": "0 0 40px -10px rgba(234, 179, 8, 0.25)",
-        "glow-blue": "0 0 40px -10px rgba(56, 189, 248, 0.2)",
+        "soft-card": "0 2px 10px -2px rgba(0, 0, 0, 0.04), 0 12px 30px -10px rgba(0, 0, 0, 0.07)",
+        "hover-card": "0 20px 40px -15px rgba(0, 0, 0, 0.12), 0 0 25px -5px rgba(245, 158, 11, 0.1)",
+        "glow-gold": "0 0 50px -10px rgba(245, 158, 11, 0.25)",
+        "glow-blue": "0 0 50px -10px rgba(56, 189, 248, 0.2)",
       },
       keyframes: {
         "fade-in-up": {

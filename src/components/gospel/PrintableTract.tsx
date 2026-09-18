@@ -32,15 +32,15 @@ export function PrintableTract({ translation }: PrintableTractProps) {
       </div>
 
       {/* The Printable Container */}
-      <div className="rounded-2xl bg-gospel-surface border border-gospel-border p-6 sm:p-10 shadow-lg print:border-none print:shadow-none print:p-0">
+      <div className="rounded-3xl bg-gospel-surface border border-gospel-border p-6 sm:p-10 shadow-soft-card print:border-none print:shadow-none print:p-0">
         {/* Tract Header */}
         <div className="border-b-2 border-amber-500/40 pb-4 mb-6 text-center print:text-left print:border-black">
-          <div className="flex items-center justify-center print:justify-start gap-2 text-amber-500 font-serif font-bold text-xl sm:text-2xl print:text-black">
+          <div className="flex items-center justify-center print:justify-start gap-2 text-amber-600 dark:text-amber-400 font-display font-extrabold text-xl sm:text-2xl print:text-black">
             <BookOpen className="w-6 h-6" />
             <span>The One Page Gospel</span>
           </div>
-          <p className="text-xs sm:text-sm text-gospel-muted print:text-gray-700 mt-1 font-serif italic">
-            Good News of Reconciliation, Hope, and Eternal Life through Jesus Christ ({translation})
+          <p className="text-xs sm:text-sm text-gospel-muted print:text-gray-700 mt-1 font-normal">
+            The Good News of God&apos;s Love, Hope, and Eternal Life through Jesus Christ ({translation})
           </p>
         </div>
 
@@ -49,13 +49,13 @@ export function PrintableTract({ translation }: PrintableTractProps) {
           {GOSPEL_STEPS.map((step) => (
             <div
               key={step.id}
-              className="p-3.5 rounded-xl bg-gospel-surface-raised/70 border border-gospel-border-strong/60 flex flex-col justify-between print:border print:border-gray-300 print:bg-white print-break-inside-avoid"
+              className="p-4 rounded-2xl bg-gospel-surface-raised/70 border border-gospel-border-strong/60 flex flex-col justify-between print:border print:border-gray-300 print:bg-white print-break-inside-avoid shadow-sm"
             >
               <div>
-                <span className="text-[10px] font-mono font-bold text-amber-500 uppercase tracking-widest block mb-1">
+                <span className="text-[10px] font-mono font-bold text-amber-600 dark:text-amber-400 uppercase tracking-widest block mb-1">
                   Point {step.number}
                 </span>
-                <h4 className="font-serif font-bold text-sm text-gospel-text print:text-black leading-snug">
+                <h4 className="font-display font-bold text-sm text-gospel-text print:text-black leading-snug">
                   {step.title}
                 </h4>
                 <p className="text-[11px] text-gospel-muted print:text-gray-700 mt-1.5 leading-normal">
@@ -76,10 +76,10 @@ export function PrintableTract({ translation }: PrintableTractProps) {
         </div>
 
         {/* Bottom Section: Response & Prayer */}
-        <div className="rounded-xl p-5 bg-amber-500/5 border border-amber-500/30 print:border print:border-gray-400 print:bg-gray-50 print-break-inside-avoid">
+        <div className="rounded-2xl p-5 bg-amber-500/10 border border-amber-500/25 print:border print:border-gray-400 print:bg-gray-50 print-break-inside-avoid">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 items-center">
             <div className="md:col-span-1">
-              <h4 className="font-serif font-bold text-base text-gospel-text print:text-black">
+              <h4 className="font-display font-bold text-base text-gospel-text print:text-black">
                 How Will You Respond?
               </h4>
               <p className="text-xs text-gospel-muted print:text-gray-700 mt-1 leading-relaxed">

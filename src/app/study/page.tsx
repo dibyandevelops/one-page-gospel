@@ -213,11 +213,11 @@ export default function StudyPage() {
               </span>
             </div>
 
-            <h1 className="font-serif text-3xl sm:text-5xl font-extrabold tracking-tight text-gospel-text leading-tight mb-4">
+            <h1 className="font-display text-3xl sm:text-5xl font-extrabold tracking-tight text-gospel-text leading-tight mb-4">
               The Good News Explained
             </h1>
 
-            <p className="text-base sm:text-xl text-gospel-muted font-serif italic leading-relaxed">
+            <p className="text-base sm:text-lg text-gospel-muted leading-relaxed font-normal">
               A clear, honest guide to the Bible&apos;s story, evidence, and answers to common questions.
             </p>
           </section>
@@ -231,7 +231,7 @@ export default function StudyPage() {
                   <span className="text-xs font-mono font-bold text-amber-700 dark:text-amber-400 tracking-wider uppercase block mb-1">
                     Part {section.number}
                   </span>
-                  <h2 className="font-serif text-2xl sm:text-3xl font-bold text-gospel-text tracking-tight">
+                  <h2 className="font-display text-2xl sm:text-3xl font-bold text-gospel-text tracking-tight">
                     {section.title}
                   </h2>
                   <p className="text-xs sm:text-sm font-mono text-gospel-muted mt-1">
@@ -240,7 +240,7 @@ export default function StudyPage() {
                 </div>
 
                 {/* Section Summary Callout */}
-                <div className="p-5 rounded-xl bg-gospel-surface border-l-4 border-amber-500 my-6 text-sm sm:text-base text-gospel-text/90 leading-relaxed font-serif">
+                <div className="p-5 rounded-2xl bg-gospel-surface-raised/80 border-l-4 border-amber-500 my-6 text-sm sm:text-base text-gospel-text/90 leading-relaxed font-normal shadow-sm">
                   {section.summary}
                 </div>
 
