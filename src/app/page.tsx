@@ -10,14 +10,14 @@ import { VideoSection } from "@/components/gospel/VideoSection";
 import { KidsJourney } from "@/components/gospel/KidsJourney";
 import { Footer } from "@/components/gospel/Footer";
 import { GOSPEL_STEPS } from "@/lib/gospel-data";
-import { Sparkles, BookMarked, ShieldCheck, Heart } from "lucide-react";
+import { Sparkles, BookMarked, ShieldCheck, Heart, ArrowRight } from "lucide-react";
 
 export default function HomePage() {
   const [viewMode, setViewMode] = useState<ViewMode>("narrative");
   const [translation, setTranslation] = useState<Translation>("ESV");
 
   return (
-    <div className="min-h-screen flex flex-col bg-gospel-canvas text-gospel-text">
+    <div className="min-h-screen flex flex-col bg-gospel-canvas text-gospel-text relative selection:bg-amber-500/20 selection:text-amber-400">
       {/* Sticky Header */}
       <Header
         viewMode={viewMode}
@@ -27,68 +27,98 @@ export default function HomePage() {
       />
 
       {/* Main Content Area */}
-      <main className="flex-1 max-w-5xl mx-auto px-4 sm:px-6 w-full pt-6 sm:pt-8 pb-16">
+      <main className="flex-1 max-w-5xl mx-auto px-4 sm:px-6 w-full pt-8 pb-20 relative z-10">
         {/* Hero Section */}
-        <section className="text-center pt-6 pb-8 max-w-3xl mx-auto no-print">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-500 text-xs font-semibold uppercase tracking-wider mb-5 animate-fade-in-up">
+        <section className="text-center pt-8 pb-10 max-w-3xl mx-auto no-print">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-amber-500/15 border border-amber-500/35 text-amber-400 text-xs font-bold uppercase tracking-widest mb-6 shadow-sm animate-fade-in-up">
             <Sparkles className="w-3.5 h-3.5" />
-            {viewMode === "kids" ? "🌟 Kids & Youth Edition" : "Clear • Faithful • Life-Transforming"}
+            {viewMode === "kids" ? "🌟 Kids & Youth Adventure" : "Clear • Faithful • Life-Transforming"}
           </div>
 
-          <h1 className="font-serif text-4xl sm:text-6xl font-bold tracking-tight text-gospel-text leading-tight mb-4 animate-fade-in-up">
+          <h1 className="font-serif text-5xl sm:text-7xl font-extrabold tracking-tight leading-tight mb-5 drop-shadow-sm text-shimmer-gold animate-fade-in-up">
             {viewMode === "kids" ? "The Big Story: God's Love for Kids!" : "The Gospel in One Page"}
           </h1>
 
-          <p className="text-base sm:text-xl text-gospel-muted leading-relaxed font-serif max-w-2xl mx-auto mb-6 animate-fade-in-up">
+          <p className="text-lg sm:text-2xl text-gospel-muted leading-relaxed font-serif max-w-2xl mx-auto mb-8 animate-fade-in-up">
             {viewMode === "kids"
-              ? "An exciting, easy-to-understand journey through God's awesome plan to love, forgive, and adopt you into His forever family."
+              ? "An exciting, visual journey discovering how the King of Heaven made you, rescued you, and adopts you into His forever family."
               : "The greatest news in human history: how a loving God rescues, redeems, and reconciles us to Himself through Jesus Christ."}
           </p>
 
           {/* Mode Switch Helper Pill */}
-          <div className="flex items-center justify-center gap-2 mb-6">
+          <div className="flex flex-wrap items-center justify-center gap-3 mb-8">
             {viewMode !== "kids" ? (
               <button
                 onClick={() => setViewMode("kids")}
-                className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-gradient-to-r from-amber-500/15 via-rose-500/10 to-amber-500/15 border border-amber-500/40 text-xs font-bold text-amber-500 hover:scale-105 transition-all shadow-sm"
+                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-2xl bg-gradient-to-r from-amber-500/20 via-rose-500/15 to-amber-500/20 border border-amber-500/50 text-xs font-bold text-amber-300 hover:scale-105 transition-all shadow-[0_0_30px_rgba(245,158,11,0.2)]"
               >
                 <span>🌟 Switch to Kid-Friendly Edition</span>
+                <ArrowRight className="w-3.5 h-3.5" />
               </button>
             ) : (
               <button
                 onClick={() => setViewMode("narrative")}
-                className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-gospel-surface border border-gospel-border text-xs font-bold text-gospel-muted hover:text-gospel-text transition-all"
+                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-2xl bg-gospel-surface border border-gospel-border text-xs font-bold text-gospel-muted hover:text-gospel-text hover:border-amber-400/40 transition-all shadow-sm"
               >
                 <span>← Back to Standard Journey</span>
               </button>
             )}
+
+            <button
+              onClick={() => setViewMode(viewMode === "bridge" ? "narrative" : "bridge")}
+              className={`inline-flex items-center gap-2 px-4 py-2.5 rounded-2xl border text-xs font-bold transition-all ${
+                viewMode === "bridge"
+                  ? "bg-amber-500 text-slate-950 border-amber-400 font-extrabold shadow-glow-gold"
+                  : "bg-gospel-surface border-gospel-border text-gospel-muted hover:text-amber-400"
+              }`}
+            >
+              <span>Explore The Bridge Artwork</span>
+            </button>
           </div>
 
           {/* Quick Stats Badges */}
-          <div className="flex flex-wrap items-center justify-center gap-2.5 text-xs font-medium text-gospel-muted">
-            <span className="flex items-center gap-1.5 px-3 py-1 rounded-lg bg-gospel-surface border border-gospel-border">
-              <BookMarked className="w-3.5 h-3.5 text-amber-500" />
+          <div className="flex flex-wrap items-center justify-center gap-3 text-xs font-medium text-gospel-muted">
+            <span className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-gospel-surface border border-gospel-border shadow-sm">
+              <BookMarked className="w-4 h-4 text-amber-500" />
               5 Core Truths
             </span>
-            <span className="flex items-center gap-1.5 px-3 py-1 rounded-lg bg-gospel-surface border border-gospel-border">
-              <ShieldCheck className="w-3.5 h-3.5 text-emerald-500" />
-              Direct Scripture Quotes ({translation})
+            <span className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-gospel-surface border border-gospel-border shadow-sm">
+              <ShieldCheck className="w-4 h-4 text-emerald-500" />
+              Direct Scripture ({translation})
             </span>
-            <span className="flex items-center gap-1.5 px-3 py-1 rounded-lg bg-gospel-surface border border-gospel-border">
-              <Heart className="w-3.5 h-3.5 text-rose-400" />
+            <span className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-gospel-surface border border-gospel-border shadow-sm">
+              <Heart className="w-4 h-4 text-rose-400 fill-rose-400/20" />
               All Ages &amp; Families
             </span>
           </div>
+
+          {/* Quick Jump Timeline Navigation (Narrative Mode) */}
+          {viewMode === "narrative" && (
+            <div className="mt-8 pt-6 border-t border-gospel-border/60 flex flex-wrap items-center justify-center gap-2">
+              <span className="text-xs text-gospel-muted uppercase font-bold tracking-wider mr-2 hidden sm:inline">
+                Jump to:
+              </span>
+              {GOSPEL_STEPS.map((step) => (
+                <a
+                  key={step.id}
+                  href={`#${step.id}`}
+                  className="px-3 py-1.5 rounded-xl bg-gospel-surface border border-gospel-border hover:border-amber-500/50 hover:text-amber-400 text-xs font-medium transition-all"
+                >
+                  {step.number}. {step.title.split(":")[0]}
+                </a>
+              ))}
+            </div>
+          )}
         </section>
 
-        {/* Video Spotlight - featured in both Guided Journey and Kids Edition */}
+        {/* Video Spotlight - featured prominently */}
         {(viewMode === "narrative" || viewMode === "kids") && (
           <VideoSection isKidsMode={viewMode === "kids"} />
         )}
 
-        {/* View Mode: Full Narrative Journey */}
+        {/* View Mode: Full Narrative Journey with Artwork Cards */}
         {viewMode === "narrative" && (
-          <div className="space-y-8 animate-fade-in-up mt-8">
+          <div className="space-y-12 animate-fade-in-up mt-8">
             {GOSPEL_STEPS.map((step, index) => (
               <React.Fragment key={step.id}>
                 <SectionCard step={step} translation={translation} />
@@ -114,7 +144,7 @@ export default function HomePage() {
 
         {/* View Mode: Dedicated Bridge Diagram */}
         {viewMode === "bridge" && (
-          <div className="animate-fade-in-up space-y-8">
+          <div className="animate-fade-in-up space-y-10">
             <BridgeIllustration translation={translation} />
             <PrayerSection />
           </div>

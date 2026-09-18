@@ -18,6 +18,7 @@ describe("gospel-data", () => {
   it("ensures each step has valid translations for key scripture", () => {
     for (const step of GOSPEL_STEPS) {
       expect(step.title).toBeTruthy();
+      expect(step.image).toBeTruthy();
       expect(step.keyVerse.reference).toBeTruthy();
       expect(step.keyVerse.translations.ESV).toBeTruthy();
       expect(step.keyVerse.translations.NIV).toBeTruthy();

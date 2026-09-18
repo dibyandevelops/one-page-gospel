@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import Image from "next/image";
 import {
   Sparkles,
   AlertCircle,
@@ -11,6 +12,8 @@ import {
   BookMarked,
   HeartHandshake,
   Compass,
+  Volume2,
+  VolumeX,
 } from "lucide-react";
 import type { GospelStep } from "@/lib/gospel-data";
 import type { Translation } from "./Header";
@@ -22,6 +25,29 @@ interface SectionCardProps {
 
 export function SectionCard({ step, translation }: SectionCardProps) {
   const [showMoreVerses, setShowMoreVerses] = useState(false);
+  const [isSpeaking, setIsSpeaking] = useState(false);
+
+  // Text to speech for scripture
+  const handleSpeak = () => {
+    if (typeof window === "undefined" || !("speechSynthesis" in window)) return;
+
+    if (isSpeaking) {
+      window.speechSynthesis.cancel();
+      setIsSpeaking(false);
+      return;
+    }
+
+    window.speechSynthesis.cancel();
+    const textToRead = `${step.keyVerse.reference}. ${step.keyVerse.translations[translation]}`;
+    const utterance = new SpeechSynthesisUtterance(textToRead);
+    utterance.rate = 0.95;
+    utterance.pitch = 1.0;
+    utterance.onend = () => setIsSpeaking(false);
+    utterance.onerror = () => setIsSpeaking(false);
+
+    setIsSpeaking(true);
+    window.speechSynthesis.speak(utterance);
+  };
 
   // Icon mapping
   const renderIcon = () => {
@@ -45,140 +71,178 @@ export function SectionCard({ step, translation }: SectionCardProps) {
     }
   };
 
-  const getBorderColor = () => {
+  const getThemeGlow = () => {
     switch (step.themeColor) {
       case "emerald":
-        return "hover:border-emerald-500/40 focus-within:border-emerald-500/50";
+        return "shadow-[0_0_50px_-15px_rgba(16,185,129,0.15)] border-emerald-500/30";
       case "crimson":
-        return "hover:border-rose-500/40 focus-within:border-rose-500/50";
+        return "shadow-[0_0_50px_-15px_rgba(244,63,94,0.15)] border-rose-500/30";
       case "gold":
-        return "hover:border-amber-500/50 focus-within:border-amber-500/60";
+        return "shadow-[0_0_50px_-15px_rgba(245,158,11,0.2)] border-amber-500/40";
       case "blue":
-        return "hover:border-sky-500/40 focus-within:border-sky-500/50";
+        return "shadow-[0_0_50px_-15px_rgba(56,189,248,0.15)] border-sky-500/30";
       case "amber":
-        return "hover:border-amber-500/40 focus-within:border-amber-500/50";
+        return "shadow-[0_0_50px_-15px_rgba(245,158,11,0.18)] border-amber-500/30";
     }
   };
 
   return (
     <article
       id={step.id}
-      className={`rounded-app-lg p-6 sm:p-8 bg-gospel-surface border border-gospel-border shadow-soft-card transition-all duration-300 ${getBorderColor()}`}
+      className={`rounded-3xl overflow-hidden bg-gospel-surface border transition-all duration-300 ${getThemeGlow()}`}
     >
-      {/* Header section */}
-      <div className="flex items-start justify-between gap-4 mb-4">
-        <div className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-xl bg-gospel-surface-raised border border-gospel-border-strong flex items-center justify-center shadow-inner">
+      {/* Cinematic Image Header */}
+      <div className="relative h-60 sm:h-80 w-full overflow-hidden group">
+        <Image
+          src={step.image}
+          alt={step.title}
+          fill
+          sizes="(max-width: 768px) 100vw, 900px"
+          className="object-cover transition-transform duration-700 group-hover:scale-105"
+        />
+        {/* Cinematic Gradient Overlays */}
+        <div className="absolute inset-0 bg-gradient-to-t from-gospel-surface via-gospel-surface/40 to-black/30" />
+
+        {/* Floating Step Badge on top of image */}
+        <div className="absolute top-4 left-4 sm:top-6 sm:left-6 flex items-center gap-3">
+          <div className="w-11 h-11 rounded-2xl bg-black/50 backdrop-blur-md border border-white/20 flex items-center justify-center shadow-lg">
             {renderIcon()}
           </div>
-          <div>
-            <div className="text-xs uppercase tracking-widest font-bold text-gospel-muted flex items-center gap-2">
-              <span>Point 0{step.number}</span>
-              <span>•</span>
-              <span className="text-gospel-text/70">{step.subtitle}</span>
-            </div>
-            <h2 className="font-serif text-2xl sm:text-3xl font-bold text-gospel-text mt-0.5">
-              {step.title}
-            </h2>
+          <div className="bg-black/60 backdrop-blur-md border border-white/15 px-3 py-1.5 rounded-xl shadow-lg">
+            <span className="text-[11px] font-mono uppercase tracking-widest text-amber-400 font-bold">
+              Stage 0{step.number} • {step.subtitle}
+            </span>
           </div>
+        </div>
+
+        {/* Title over gradient bottom */}
+        <div className="absolute bottom-4 left-4 right-4 sm:bottom-6 sm:left-6 sm:right-6">
+          <h2 className="font-serif text-2xl sm:text-4xl font-bold text-white drop-shadow-md tracking-tight">
+            {step.title}
+          </h2>
         </div>
       </div>
 
-      {/* Main explanation paragraph */}
-      <p className="text-base sm:text-lg text-gospel-text/90 leading-relaxed font-normal mb-6">
-        {step.summary}
-      </p>
+      {/* Card Content Body */}
+      <div className="p-6 sm:p-8">
+        {/* Main explanation paragraph */}
+        <p className="text-base sm:text-lg text-gospel-text/90 leading-relaxed font-normal mb-8">
+          {step.summary}
+        </p>
 
-      {/* Key Scripture Quote Block */}
-      <div className="relative overflow-hidden rounded-app bg-gospel-surface-raised/70 border border-gospel-border-strong/70 p-5 sm:p-6 mb-6">
-        <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-br from-amber-500/5 to-transparent rounded-bl-full pointer-events-none" />
-        <div className="flex items-center justify-between gap-2 mb-2">
-          <span className="text-xs font-bold uppercase tracking-wider text-amber-500 flex items-center gap-1.5">
-            <BookMarked className="w-3.5 h-3.5" />
-            Key Scripture ({translation})
-          </span>
-          <span className="text-xs font-semibold text-gospel-muted font-mono">
-            {step.keyVerse.reference}
-          </span>
-        </div>
+        {/* Key Scripture Quote Block */}
+        <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-gospel-surface-raised via-gospel-surface-raised/90 to-gospel-surface border border-gospel-border-strong p-6 sm:p-8 mb-8 shadow-inner">
+          <div className="flex items-center justify-between gap-2 mb-3">
+            <div className="flex items-center gap-2">
+              <span className="text-xs font-bold uppercase tracking-wider text-amber-500 flex items-center gap-1.5">
+                <BookMarked className="w-4 h-4" />
+                Key Scripture ({translation})
+              </span>
+              <span className="text-xs font-semibold text-gospel-muted font-mono bg-gospel-surface px-2 py-0.5 rounded border border-gospel-border">
+                {step.keyVerse.reference}
+              </span>
+            </div>
 
-        <blockquote className="font-serif text-lg sm:text-xl italic text-gospel-text leading-relaxed pl-3 border-l-2 border-amber-500/60 my-2">
-          &ldquo;{step.keyVerse.translations[translation]}&rdquo;
-        </blockquote>
-
-        {step.keyVerse.contextNote && (
-          <p className="text-xs text-gospel-muted mt-3 italic pl-3">
-            💡 {step.keyVerse.contextNote}
-          </p>
-        )}
-
-        {/* Supplementary verses toggle */}
-        {step.supplementaryVerses && step.supplementaryVerses.length > 0 && (
-          <div className="mt-4 pt-3 border-t border-gospel-border/50">
+            {/* Listen / Audio Readout button */}
             <button
-              onClick={() => setShowMoreVerses(!showMoreVerses)}
-              className="text-xs font-semibold text-gospel-muted hover:text-amber-500 transition-colors flex items-center gap-1.5"
+              onClick={handleSpeak}
+              title={isSpeaking ? "Stop listening" : "Listen to this scripture"}
+              className={`p-2 rounded-xl text-xs font-medium flex items-center gap-1.5 transition-all ${
+                isSpeaking
+                  ? "bg-amber-500 text-slate-950 font-bold shadow-glow-gold animate-pulse"
+                  : "bg-gospel-surface border border-gospel-border text-gospel-muted hover:text-amber-400 hover:border-amber-400/40"
+              }`}
             >
-              {showMoreVerses ? (
+              {isSpeaking ? (
                 <>
-                  <Minus className="w-3.5 h-3.5" /> Hide Supporting Verses
+                  <VolumeX className="w-3.5 h-3.5" /> Stop
                 </>
               ) : (
                 <>
-                  <Plus className="w-3.5 h-3.5" /> View Supporting Scriptures ({step.supplementaryVerses.length})
+                  <Volume2 className="w-3.5 h-3.5" /> Listen
                 </>
               )}
             </button>
-
-            {showMoreVerses && (
-              <div className="mt-3 space-y-3 pl-2 border-l border-gospel-border-strong animate-fade-in-up">
-                {step.supplementaryVerses.map((sv, idx) => (
-                  <div key={idx} className="text-sm">
-                    <p className="font-semibold text-xs text-gospel-text/80 font-mono mb-0.5">
-                      {sv.reference}
-                    </p>
-                    <p className="text-gospel-muted italic">
-                      &ldquo;{sv.translations[translation]}&rdquo;
-                    </p>
-                  </div>
-                ))}
-              </div>
-            )}
           </div>
-        )}
-      </div>
 
-      {/* Takeaways & Reflection */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        {/* Takeaway points */}
-        <div className="rounded-xl p-4 bg-gospel-surface-raised/40 border border-gospel-border/60">
-          <h3 className="text-xs font-bold uppercase tracking-wider text-gospel-muted mb-2.5">
-            Key Insights
-          </h3>
-          <ul className="space-y-2">
-            {step.takeawayPoints.map((point, idx) => (
-              <li key={idx} className="flex items-start gap-2 text-sm text-gospel-text/85">
-                <CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0 mt-0.5" />
-                <span>{point}</span>
-              </li>
-            ))}
-          </ul>
+          <blockquote className="font-serif text-xl sm:text-2xl italic text-gospel-text leading-relaxed pl-4 border-l-4 border-amber-500 my-4">
+            &ldquo;{step.keyVerse.translations[translation]}&rdquo;
+          </blockquote>
+
+          {step.keyVerse.contextNote && (
+            <p className="text-xs text-gospel-muted mt-3 italic pl-4">
+              💡 {step.keyVerse.contextNote}
+            </p>
+          )}
+
+          {/* Supplementary verses toggle */}
+          {step.supplementaryVerses && step.supplementaryVerses.length > 0 && (
+            <div className="mt-5 pt-4 border-t border-gospel-border/50">
+              <button
+                onClick={() => setShowMoreVerses(!showMoreVerses)}
+                className="text-xs font-semibold text-gospel-muted hover:text-amber-500 transition-colors flex items-center gap-1.5"
+              >
+                {showMoreVerses ? (
+                  <>
+                    <Minus className="w-3.5 h-3.5" /> Hide Supporting Verses
+                  </>
+                ) : (
+                  <>
+                    <Plus className="w-3.5 h-3.5" /> View Supporting Scriptures ({step.supplementaryVerses.length})
+                  </>
+                )}
+              </button>
+
+              {showMoreVerses && (
+                <div className="mt-3 space-y-3 pl-3 border-l-2 border-gospel-border-strong animate-fade-in-up">
+                  {step.supplementaryVerses.map((sv, idx) => (
+                    <div key={idx} className="text-sm">
+                      <p className="font-semibold text-xs text-amber-400 font-mono mb-0.5">
+                        {sv.reference}
+                      </p>
+                      <p className="text-gospel-muted italic font-serif text-sm">
+                        &ldquo;{sv.translations[translation]}&rdquo;
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+          )}
         </div>
 
-        {/* Personal Reflection */}
-        <div className="rounded-xl p-4 bg-amber-500/5 border border-amber-500/20 flex flex-col justify-between">
-          <div>
-            <div className="flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-amber-500 mb-2">
-              <HelpCircle className="w-3.5 h-3.5" />
-              Heart Reflection
-            </div>
-            <p className="text-sm italic text-gospel-text font-serif">
-              &ldquo;{step.reflectionQuestion}&rdquo;
-            </p>
+        {/* Takeaways & Reflection */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+          {/* Takeaway points */}
+          <div className="rounded-2xl p-5 bg-gospel-surface-raised/60 border border-gospel-border">
+            <h3 className="text-xs font-bold uppercase tracking-wider text-gospel-muted mb-3">
+              Key Insights
+            </h3>
+            <ul className="space-y-2.5">
+              {step.takeawayPoints.map((point, idx) => (
+                <li key={idx} className="flex items-start gap-2.5 text-sm text-gospel-text/90">
+                  <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
+                  <span>{point}</span>
+                </li>
+              ))}
+            </ul>
           </div>
-          <span className="text-[11px] text-gospel-muted mt-3 block">
-            Take a moment to pause and ponder this truth.
-          </span>
+
+          {/* Personal Reflection */}
+          <div className="rounded-2xl p-5 bg-gradient-to-br from-amber-500/10 to-transparent border border-amber-500/30 flex flex-col justify-between">
+            <div>
+              <div className="flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-amber-500 mb-2.5">
+                <HelpCircle className="w-4 h-4" />
+                Heart Reflection
+              </div>
+              <p className="text-base italic text-gospel-text font-serif leading-relaxed">
+                &ldquo;{step.reflectionQuestion}&rdquo;
+              </p>
+            </div>
+            <span className="text-[11px] text-gospel-muted mt-4 block">
+              Take a moment to pause and ponder this truth.
+            </span>
+          </div>
         </div>
       </div>
     </article>

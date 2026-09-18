@@ -14,6 +14,7 @@ export interface GospelStep {
   title: string;
   subtitle: string;
   summary: string;
+  image: string;
   themeColor: "emerald" | "crimson" | "gold" | "blue" | "amber";
   iconName: "Sparkles" | "AlertCircle" | "Cross" | "HeartHandshake" | "Compass";
   keyVerse: ScriptureVerse;
@@ -30,6 +31,7 @@ export const GOSPEL_STEPS: GospelStep[] = [
     subtitle: "Created for Purpose and Relationship",
     summary:
       "God created the universe with beauty, order, and purpose. Human beings were lovingly formed in God's own image to live in joy, purpose, and unbroken communion with their Creator.",
+    image: "/images/creation.jpg",
     themeColor: "emerald",
     iconName: "Sparkles",
     keyVerse: {
@@ -73,6 +75,7 @@ export const GOSPEL_STEPS: GospelStep[] = [
     subtitle: "The Problem of Sin and Distance from God",
     summary:
       "Mankind turned away from God, choosing autonomy and self-will. This rebellion (called sin) fractured the harmony between humanity and God, bringing spiritual death, shame, guilt, and the brokenness we experience around us and inside ourselves.",
+    image: "/images/chasm.jpg",
     themeColor: "crimson",
     iconName: "AlertCircle",
     keyVerse: {
@@ -116,6 +119,7 @@ export const GOSPEL_STEPS: GospelStep[] = [
     subtitle: "God's Grace and Sacrificial Love",
     summary:
       "Because humanity could not climb up to God, God came down to us in the person of Jesus Christ. Fully God and fully human, Jesus lived a sinless life, willingly died on the cross as our substitute bearing our penalty, and physically rose again on the third day, conquering death forever.",
+    image: "/images/cross-bridge.jpg",
     themeColor: "gold",
     iconName: "Cross",
     keyVerse: {
@@ -159,6 +163,7 @@ export const GOSPEL_STEPS: GospelStep[] = [
     subtitle: "A Free Gift to Be Received, Not Earned",
     summary:
       "Salvation is not earned by rituals, good deeds, or family heritage. It is a free gift received through faith: turning from our self-directed ways (repentance) and trusting in Jesus Christ alone as Savior and Lord of our lives.",
+    image: "/images/grace-gift.jpg",
     themeColor: "blue",
     iconName: "HeartHandshake",
     keyVerse: {
@@ -202,6 +207,7 @@ export const GOSPEL_STEPS: GospelStep[] = [
     subtitle: "Transformed Heart, Eternal Hope",
     summary:
       "Trusting Christ is not the end; it is the beginning of a lifelong adventure. You receive the Holy Spirit, forgiveness of all sins past, present, and future, the assurance of eternal life, and a renewed purpose to love and serve God and others.",
+    image: "/images/new-life.jpg",
     themeColor: "amber",
     iconName: "Compass",
     keyVerse: {
