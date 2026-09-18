@@ -17,6 +17,57 @@ export default function HomePage() {
   const [viewMode, setViewMode] = useState<ViewMode>("narrative");
   const [translation, setTranslation] = useState<Translation>("ESV");
 
+  const heroContent = {
+    narrative: {
+      badgeDot: "bg-amber-500",
+      badgeTag: "The Gospel Journey",
+      badgeSubtag: "From Creation to New Life",
+      title: (
+        <>
+          The Good News <span className="text-shimmer-gold">in Plain Words</span>
+        </>
+      ),
+      description:
+        "Follow the five foundational movements of God's story: how we were made in love, why the world is broken, and how Jesus restores us to life and hope.",
+    },
+    bridge: {
+      badgeDot: "bg-amber-400",
+      badgeTag: "Visual Illustration",
+      badgeSubtag: "God's Ultimate Answer",
+      title: (
+        <>
+          The Solution: <span className="text-shimmer-gold">Jesus Bridges the Gap</span>
+        </>
+      ),
+      description:
+        "Explore how the cross and resurrection of Jesus bridge the impossible chasm of sin, reconciling broken humanity to a holy God.",
+    },
+    tract: {
+      badgeDot: "bg-sky-500",
+      badgeTag: "1-Page Printable Tract",
+      badgeSubtag: "Concise & Shareable",
+      title: (
+        <>
+          The Gospel <span className="text-shimmer-gold">at a Glance</span>
+        </>
+      ),
+      description:
+        "A clear, four-movement overview designed for fast reading, physical printing on A4/Letter, and personal reflection.",
+    },
+    kids: {
+      badgeDot: "bg-amber-400",
+      badgeTag: "Kids & Family Adventure",
+      badgeSubtag: "Storybook Edition",
+      title: (
+        <>
+          God&apos;s Big Story <span className="text-shimmer-gold">For You!</span>
+        </>
+      ),
+      description:
+        "An exciting visual story discovering how God made you, loves you, and invites you into His forever family.",
+    },
+  }[viewMode];
+
   return (
     <div className="min-h-screen flex flex-col bg-gospel-canvas text-gospel-text relative selection:bg-amber-500/20 selection:text-amber-400">
       {/* Sticky Header */}
@@ -35,69 +86,111 @@ export default function HomePage() {
         {/* Hero Section */}
         <section className="text-center pt-3 sm:pt-8 pb-8 sm:pb-10 max-w-3xl mx-auto no-print relative">
           <div className="inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1.5 rounded-full bg-surface/80 backdrop-blur-md border border-border shadow-sm text-[11px] sm:text-xs font-semibold tracking-wide mb-5 sm:mb-6 animate-fade-in-up">
-            <span className="w-2 h-2 rounded-full bg-rose-500 animate-pulse shrink-0" />
-            <span className="text-rose-600 dark:text-rose-400 font-bold">
-              {viewMode === "kids" ? "Kids & Family Adventure" : "The Diagnosis & The Cure"}
+            <span className={`w-2 h-2 rounded-full ${heroContent.badgeDot} animate-pulse shrink-0`} />
+            <span className="text-amber-600 dark:text-amber-400 font-bold">
+              {heroContent.badgeTag}
             </span>
             <span className="text-gospel-border">•</span>
             <span className="text-gospel-muted">
-              {viewMode === "kids" ? "Storybook Edition" : "The Problem & The Solution in Plain Words"}
+              {heroContent.badgeSubtag}
             </span>
           </div>
 
           <h1 className="font-display text-3xl sm:text-6xl md:text-7xl font-extrabold tracking-tight leading-[1.1] mb-4 sm:mb-6 animate-fade-in-up text-slate-900 dark:text-white">
-            {viewMode === "kids" ? (
-              <>
-                God&apos;s Big Story <span className="text-shimmer-gold">For You!</span>
-              </>
-            ) : (
-              <>
-                The Problem &amp; <span className="text-shimmer-gold">The Solution</span>
-              </>
-            )}
+            {heroContent.title}
           </h1>
 
           <p className="text-sm sm:text-xl text-gospel-muted leading-relaxed max-w-2xl mx-auto mb-6 sm:mb-8 animate-fade-in-up font-normal">
-            {viewMode === "kids"
-              ? "An exciting visual story discovering how God made you, loves you, and invites you into His forever family."
-              : "Why is the human heart broken, and how does God resolve it? Understand the diagnosis of separation and the ultimate solution found in Jesus Christ."}
+            {heroContent.description}
           </p>
 
           {/* Mode Switch Helper Pill */}
           <div className="flex flex-wrap items-center justify-center gap-2.5 sm:gap-3 mb-6 sm:mb-8">
-            <Link
-              href="/the-problem"
-              className="inline-flex items-center gap-2 px-4 py-2.5 rounded-2xl bg-rose-500/15 border border-rose-500/40 text-xs font-bold text-rose-700 dark:text-rose-300 hover:bg-rose-500 hover:text-white transition-all shadow-sm"
-            >
-              <span>⚠️ Understand The Problem</span>
-            </Link>
+            {viewMode === "narrative" && (
+              <>
+                <button
+                  onClick={() => setViewMode("bridge")}
+                  className="inline-flex items-center gap-2 px-4 py-2.5 rounded-2xl bg-amber-500 text-slate-950 font-extrabold text-xs shadow-glow-gold hover:bg-amber-400 transition-all"
+                >
+                  <span>✨ The Solution (Visual)</span>
+                </button>
+                <Link
+                  href="/the-problem"
+                  className="inline-flex items-center gap-2 px-4 py-2.5 rounded-2xl bg-rose-500/15 border border-rose-500/40 text-xs font-bold text-rose-700 dark:text-rose-300 hover:bg-rose-500 hover:text-white transition-all shadow-sm"
+                >
+                  <span>⚠️ The Problem</span>
+                </Link>
+                <button
+                  onClick={() => setViewMode("tract")}
+                  className="inline-flex items-center gap-2 px-4 py-2.5 rounded-2xl bg-gospel-surface border border-gospel-border text-xs font-bold text-gospel-muted hover:text-gospel-text hover:border-amber-500/40 transition-all shadow-sm"
+                >
+                  <span>📄 1-Page Summary</span>
+                </button>
+                <button
+                  onClick={() => setViewMode("kids")}
+                  className="inline-flex items-center gap-2 px-4 py-2.5 rounded-2xl bg-gradient-to-r from-amber-500/15 via-rose-500/10 to-amber-500/15 border border-amber-500/40 text-xs font-bold text-amber-800 dark:text-amber-300 hover:border-amber-500 transition-all shadow-sm"
+                >
+                  <span>🌟 Kids Edition</span>
+                  <ArrowRight className="w-3.5 h-3.5" />
+                </button>
+              </>
+            )}
 
-            <button
-              onClick={() => setViewMode(viewMode === "bridge" ? "narrative" : "bridge")}
-              className={`inline-flex items-center gap-2 px-4 py-2.5 rounded-2xl border text-xs font-bold transition-all ${
-                viewMode === "bridge"
-                  ? "bg-amber-500 text-slate-950 border-amber-400 font-extrabold shadow-glow-gold"
-                  : "bg-gospel-surface border-gospel-border text-gospel-muted hover:text-amber-600 dark:hover:text-amber-400 hover:border-amber-500/40"
-              }`}
-            >
-              <span>✨ Explore The Solution</span>
-            </button>
+            {viewMode === "bridge" && (
+              <>
+                <button
+                  onClick={() => setViewMode("narrative")}
+                  className="inline-flex items-center gap-2 px-4 py-2.5 rounded-2xl bg-amber-500 text-slate-950 font-extrabold text-xs shadow-glow-gold hover:bg-amber-400 transition-all"
+                >
+                  <span>← Full Journey</span>
+                </button>
+                <Link
+                  href="/the-problem"
+                  className="inline-flex items-center gap-2 px-4 py-2.5 rounded-2xl bg-rose-500/15 border border-rose-500/40 text-xs font-bold text-rose-700 dark:text-rose-300 hover:bg-rose-500 hover:text-white transition-all shadow-sm"
+                >
+                  <span>⚠️ Understand The Problem</span>
+                </Link>
+                <a
+                  href="#prayer"
+                  className="inline-flex items-center gap-2 px-4 py-2.5 rounded-2xl bg-gospel-surface border border-gospel-border text-xs font-bold text-gospel-text hover:border-amber-500/50 transition-all"
+                >
+                  <span>Accept Jesus in Prayer</span>
+                </a>
+              </>
+            )}
 
-            {viewMode !== "kids" ? (
-              <button
-                onClick={() => setViewMode("kids")}
-                className="inline-flex items-center gap-2 px-4 py-2.5 rounded-2xl bg-gradient-to-r from-amber-500/15 via-rose-500/10 to-amber-500/15 border border-amber-500/40 text-xs font-bold text-amber-800 dark:text-amber-300 hover:border-amber-500 hover:scale-105 transition-all shadow-sm"
-              >
-                <span>🌟 Kids Edition</span>
-                <ArrowRight className="w-3.5 h-3.5" />
-              </button>
-            ) : (
-              <button
-                onClick={() => setViewMode("narrative")}
-                className="inline-flex items-center gap-2 px-4 py-2.5 rounded-2xl bg-gospel-surface border border-gospel-border text-xs font-bold text-gospel-muted hover:text-gospel-text hover:border-amber-500/40 transition-all shadow-sm"
-              >
-                <span>← Back to Main Journey</span>
-              </button>
+            {viewMode === "tract" && (
+              <>
+                <button
+                  onClick={() => setViewMode("narrative")}
+                  className="inline-flex items-center gap-2 px-4 py-2.5 rounded-2xl bg-amber-500 text-slate-950 font-extrabold text-xs shadow-glow-gold hover:bg-amber-400 transition-all"
+                >
+                  <span>← Back to Full Journey</span>
+                </button>
+                <button
+                  onClick={() => setViewMode("bridge")}
+                  className="inline-flex items-center gap-2 px-4 py-2.5 rounded-2xl bg-gospel-surface border border-gospel-border text-xs font-bold text-gospel-muted hover:text-amber-600 dark:hover:text-amber-400 hover:border-amber-500/40 transition-all"
+                >
+                  <span>✨ The Solution</span>
+                </button>
+              </>
+            )}
+
+            {viewMode === "kids" && (
+              <>
+                <button
+                  onClick={() => setViewMode("narrative")}
+                  className="inline-flex items-center gap-2 px-4 py-2.5 rounded-2xl bg-gospel-surface border border-gospel-border text-xs font-bold text-gospel-muted hover:text-gospel-text hover:border-amber-500/40 transition-all shadow-sm"
+                >
+                  <span>← Back to Main Journey</span>
+                </button>
+                <button
+                  onClick={() => setViewMode("bridge")}
+                  className="inline-flex items-center gap-2 px-4 py-2.5 rounded-2xl bg-amber-500 text-slate-950 font-extrabold text-xs shadow-glow-gold hover:bg-amber-400 transition-all"
+                >
+                  <span>✨ Explore The Solution</span>
+                </button>
+              </>
             )}
           </div>
 
