@@ -1,10 +1,10 @@
 "use client";
 
 import React, { useState } from "react";
-import { BookOpen, Moon, Sun, Printer, Share2, Check, Compass } from "lucide-react";
+import { BookOpen, Moon, Sun, Printer, Share2, Check, Compass, Sparkles } from "lucide-react";
 import { useTheme } from "@/components/theme-provider";
 
-export type ViewMode = "narrative" | "bridge" | "tract";
+export type ViewMode = "narrative" | "bridge" | "tract" | "kids";
 export type Translation = "ESV" | "NIV" | "KJV";
 
 interface HeaderProps {
@@ -96,6 +96,17 @@ export function Header({
           >
             1-Page Summary
           </button>
+          <button
+            onClick={() => setViewMode("kids")}
+            className={`px-3 py-1.5 rounded-lg transition-all flex items-center gap-1.5 ${
+              viewMode === "kids"
+                ? "bg-amber-500/20 text-amber-500 dark:text-amber-400 shadow-sm border border-amber-500/40 font-bold"
+                : "text-gospel-muted hover:text-amber-500"
+            }`}
+          >
+            <Sparkles className="w-3.5 h-3.5 text-amber-400" />
+            Kids Edition
+          </button>
         </nav>
 
         {/* Action controls */}
@@ -185,7 +196,17 @@ export function Header({
               : "text-gospel-muted"
           }`}
         >
-          1-Page Summary
+          Summary
+        </button>
+        <button
+          onClick={() => setViewMode("kids")}
+          className={`px-2.5 py-1 rounded-md flex items-center gap-1 ${
+            viewMode === "kids"
+              ? "bg-amber-500/20 text-amber-500 font-bold"
+              : "text-gospel-muted hover:text-amber-500"
+          }`}
+        >
+          <span>Kids 🌟</span>
         </button>
       </div>
     </header>
