@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
-import { Sparkles, ArrowRight, Volume2, VolumeX } from "lucide-react";
+import { Sparkles, ArrowRight, Volume2, VolumeX, X, Info } from "lucide-react";
 import type { Translation } from "./Header";
 
 interface BridgeProps {
@@ -11,6 +11,7 @@ interface BridgeProps {
 
 export function BridgeIllustration({ translation }: BridgeProps) {
   const [activeStep, setActiveStep] = useState<"man" | "chasm" | "cross" | "god">("cross");
+  const [showTooltip, setShowTooltip] = useState(true);
   const [isSpeaking, setIsSpeaking] = useState(false);
 
   const descriptions = {
@@ -18,6 +19,7 @@ export function BridgeIllustration({ translation }: BridgeProps) {
       title: "1. Humanity in Separation",
       cliff: "Left Cliff",
       verse: "Romans 3:23",
+      shortTooltip: "All of us have fallen short of God's perfect love and holy standard.",
       text: {
         ESV: "For all have sinned and fall short of the glory of God.",
         NIV: "For all have sinned and fall short of the glory of God.",
@@ -25,11 +27,14 @@ export function BridgeIllustration({ translation }: BridgeProps) {
       },
       note: "We often try to reach God with good deeds, moral effort, or religion, but on our own we all fall short of God's perfect love.",
       badgeColor: "border-rose-500 text-rose-500 dark:text-rose-400 bg-rose-500/10",
+      tooltipBorder: "border-rose-500/40",
+      tooltipBadge: "text-rose-400 bg-rose-500/20 border-rose-500/30",
     },
     chasm: {
       title: "2. The Chasm of Sin",
       cliff: "The Abyss",
       verse: "Romans 6:23a",
+      shortTooltip: "The canyon of sin is an infinite gap too wide for any human effort to cross.",
       text: {
         ESV: "For the wages of sin is death...",
         NIV: "For the wages of sin is death...",
@@ -37,11 +42,14 @@ export function BridgeIllustration({ translation }: BridgeProps) {
       },
       note: "Sin cuts us off from God, the true source of life and joy. It is a canyon too wide for any human to cross on their own.",
       badgeColor: "border-rose-600 text-rose-500 dark:text-rose-400 bg-rose-950/40",
+      tooltipBorder: "border-rose-600/40",
+      tooltipBadge: "text-rose-400 bg-rose-950/50 border-rose-600/30",
     },
     cross: {
       title: "3. The Cross: Jesus the Bridge",
       cliff: "The Bridge",
-      verse: "1 Peter 3:18 / 1 Tim 2:5",
+      verse: "1 Peter 3:18",
+      shortTooltip: "Jesus spans the gap! His life, cross, and resurrection make the only bridge back to God.",
       text: {
         ESV: "For Christ also suffered once for sins, the righteous for the unrighteous, that he might bring us to God.",
         NIV: "For Christ also suffered once for sins, the righteous for the unrighteous, to bring you to God.",
@@ -49,11 +57,14 @@ export function BridgeIllustration({ translation }: BridgeProps) {
       },
       note: "Jesus builds the bridge! By giving His life on the cross and rising again, Jesus connects us directly back to God.",
       badgeColor: "border-amber-500 text-amber-600 dark:text-amber-400 bg-amber-500/15",
+      tooltipBorder: "border-amber-400/50",
+      tooltipBadge: "text-amber-300 bg-amber-500/25 border-amber-400/40",
     },
     god: {
       title: "4. Holy God: Eternal Life & Peace",
       cliff: "Right Mountain",
       verse: "John 5:24",
+      shortTooltip: "Crossing through Jesus brings unconditional forgiveness, eternal life, and peace with God.",
       text: {
         ESV: "Whoever hears my word and believes him who sent me has eternal life. He does not come into judgment, but has passed from death to life.",
         NIV: "Whoever hears my word and believes him who sent me has eternal life and will not be judged but has crossed over from death to life.",
@@ -61,7 +72,18 @@ export function BridgeIllustration({ translation }: BridgeProps) {
       },
       note: "By trusting Jesus, we cross the bridge into God's loving family—completely forgiven, with eternal life and real peace.",
       badgeColor: "border-emerald-500 text-emerald-600 dark:text-emerald-400 bg-emerald-500/15",
+      tooltipBorder: "border-emerald-500/40",
+      tooltipBadge: "text-emerald-300 bg-emerald-500/20 border-emerald-500/30",
     },
+  };
+
+  const handleStepClick = (step: "man" | "chasm" | "cross" | "god") => {
+    if (activeStep === step && showTooltip) {
+      setShowTooltip(false);
+    } else {
+      setActiveStep(step);
+      setShowTooltip(true);
+    }
   };
 
   const handleSpeak = () => {
@@ -96,13 +118,21 @@ export function BridgeIllustration({ translation }: BridgeProps) {
           The Bridge to Eternal Life
         </h2>
         <p className="text-xs sm:text-base text-gospel-muted mt-2">
-          See how the cross of Jesus crosses the gap of sin to connect us back to God.
+          Click any button on the artwork to discover how Jesus bridges the gap between us and God.
         </p>
       </div>
 
-      {/* Cinematic Artwork with Interactive Hotspots */}
+      {/* Cinematic Artwork with Interactive Hotspots & Tooltips */}
       <div className="relative rounded-3xl overflow-hidden border-2 border-amber-500/30 shadow-2xl mb-4 sm:mb-8 group">
-        <div className="relative h-64 sm:h-[420px] w-full">
+        {/* Helper Hint Pill on Artwork */}
+        <div className="absolute top-3 left-3 sm:top-4 sm:left-4 z-20 pointer-events-none">
+          <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-black/60 backdrop-blur-md border border-white/15 text-[10px] sm:text-xs text-white/90 shadow-md">
+            <Info className="w-3 h-3 text-amber-400" />
+            <span>Click buttons to view tooltip details</span>
+          </div>
+        </div>
+
+        <div className="relative h-72 sm:h-[440px] w-full">
           <Image
             src="/images/cross-bridge.jpg"
             alt="The Cross Bridge across the chasm to the Golden Mountain"
@@ -115,55 +145,191 @@ export function BridgeIllustration({ translation }: BridgeProps) {
 
           {/* Interactive Clickable Hotspots overlaying the artwork */}
           {/* 1. Left Cliff (Man) */}
-          <button
-            onClick={() => setActiveStep("man")}
-            className={`absolute bottom-3 left-2 sm:bottom-6 sm:left-8 px-2.5 py-1.5 sm:px-3.5 sm:py-2 rounded-xl backdrop-blur-md border transition-all text-[11px] sm:text-sm font-bold shadow-xl flex items-center gap-1.5 ${
-              activeStep === "man"
-                ? "bg-rose-500 text-white border-rose-300 scale-105 ring-2 sm:ring-4 ring-rose-500/40"
-                : "bg-black/60 text-white/90 border-white/20 hover:bg-black/80 hover:scale-105"
-            }`}
-          >
-            <span className="w-2 h-2 rounded-full bg-rose-400 animate-ping" />
-            1. Us
-          </button>
+          <div className="absolute bottom-3 left-2 sm:bottom-6 sm:left-8 z-20">
+            {showTooltip && activeStep === "man" && (
+              <div
+                role="tooltip"
+                className="absolute bottom-full mb-2.5 left-0 w-60 sm:w-72 max-w-[calc(100vw-3rem)] p-3 sm:p-3.5 rounded-2xl bg-slate-950/95 text-white backdrop-blur-xl border border-rose-500/40 shadow-[0_12px_30px_rgba(0,0,0,0.6)] animate-fade-in-up"
+              >
+                <div className="flex items-center justify-between gap-2 mb-1.5">
+                  <span className="inline-flex items-center gap-1.5 text-[10px] sm:text-xs font-bold uppercase tracking-wider text-rose-400 bg-rose-500/20 px-2 py-0.5 rounded-md border border-rose-500/30">
+                    <span className="w-1.5 h-1.5 rounded-full bg-rose-400 animate-ping" />
+                    Step 1 • Us
+                  </span>
+                  <button
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      setShowTooltip(false);
+                    }}
+                    className="p-1 rounded-md text-white/60 hover:text-white hover:bg-white/10 transition-colors"
+                    aria-label="Close tooltip"
+                  >
+                    <X className="w-3.5 h-3.5" />
+                  </button>
+                </div>
+                <p className="text-xs sm:text-sm font-medium text-slate-200 leading-snug mb-2">
+                  {descriptions.man.shortTooltip}
+                </p>
+                <div className="flex items-center justify-between pt-1.5 border-t border-white/10 text-[10px] sm:text-[11px]">
+                  <span className="font-mono text-amber-300 font-semibold">{descriptions.man.verse}</span>
+                  <span className="text-slate-400">See details below ↓</span>
+                </div>
+                {/* Tooltip Arrow */}
+                <div className="absolute -bottom-1.5 left-6 w-3 h-3 rotate-45 bg-slate-950 border-r border-b border-rose-500/40" />
+              </div>
+            )}
+            <button
+              onClick={() => handleStepClick("man")}
+              className={`px-2.5 py-1.5 sm:px-3.5 sm:py-2 rounded-xl backdrop-blur-md border transition-all text-[11px] sm:text-sm font-bold shadow-xl flex items-center gap-1.5 ${
+                activeStep === "man"
+                  ? "bg-rose-500 text-white border-rose-300 scale-105 ring-2 sm:ring-4 ring-rose-500/40"
+                  : "bg-black/60 text-white/90 border-white/20 hover:bg-black/80 hover:scale-105"
+              }`}
+            >
+              <span className="w-2 h-2 rounded-full bg-rose-400 animate-ping" />
+              1. Us
+            </button>
+          </div>
 
           {/* 2. The Chasm */}
-          <button
-            onClick={() => setActiveStep("chasm")}
-            className={`absolute bottom-3 left-1/3 -translate-x-1/2 px-2.5 py-1.5 sm:px-3 sm:py-1.5 rounded-xl backdrop-blur-md border transition-all text-[11px] sm:text-xs font-bold shadow-xl flex items-center gap-1.5 ${
-              activeStep === "chasm"
-                ? "bg-rose-900 text-white border-rose-500 scale-105 ring-2 sm:ring-4 ring-rose-900/40"
-                : "bg-black/60 text-white/80 border-white/20 hover:bg-black/80"
-            }`}
-          >
-            2. The Gap
-          </button>
+          <div className="absolute bottom-3 left-1/3 -translate-x-1/2 sm:bottom-6 z-20">
+            {showTooltip && activeStep === "chasm" && (
+              <div
+                role="tooltip"
+                className="absolute bottom-full mb-2.5 left-1/2 -translate-x-1/2 w-60 sm:w-72 max-w-[calc(100vw-3rem)] p-3 sm:p-3.5 rounded-2xl bg-slate-950/95 text-white backdrop-blur-xl border border-rose-600/40 shadow-[0_12px_30px_rgba(0,0,0,0.6)] animate-fade-in-up"
+              >
+                <div className="flex items-center justify-between gap-2 mb-1.5">
+                  <span className="inline-flex items-center gap-1.5 text-[10px] sm:text-xs font-bold uppercase tracking-wider text-rose-400 bg-rose-950/50 px-2 py-0.5 rounded-md border border-rose-600/30">
+                    <span className="w-1.5 h-1.5 rounded-full bg-rose-500" />
+                    Step 2 • The Gap
+                  </span>
+                  <button
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      setShowTooltip(false);
+                    }}
+                    className="p-1 rounded-md text-white/60 hover:text-white hover:bg-white/10 transition-colors"
+                    aria-label="Close tooltip"
+                  >
+                    <X className="w-3.5 h-3.5" />
+                  </button>
+                </div>
+                <p className="text-xs sm:text-sm font-medium text-slate-200 leading-snug mb-2">
+                  {descriptions.chasm.shortTooltip}
+                </p>
+                <div className="flex items-center justify-between pt-1.5 border-t border-white/10 text-[10px] sm:text-[11px]">
+                  <span className="font-mono text-amber-300 font-semibold">{descriptions.chasm.verse}</span>
+                  <span className="text-slate-400">See details below ↓</span>
+                </div>
+                {/* Tooltip Arrow */}
+                <div className="absolute -bottom-1.5 left-1/2 -translate-x-1/2 w-3 h-3 rotate-45 bg-slate-950 border-r border-b border-rose-600/40" />
+              </div>
+            )}
+            <button
+              onClick={() => handleStepClick("chasm")}
+              className={`px-2.5 py-1.5 sm:px-3 sm:py-1.5 rounded-xl backdrop-blur-md border transition-all text-[11px] sm:text-xs font-bold shadow-xl flex items-center gap-1.5 ${
+                activeStep === "chasm"
+                  ? "bg-rose-900 text-white border-rose-500 scale-105 ring-2 sm:ring-4 ring-rose-900/40"
+                  : "bg-black/60 text-white/80 border-white/20 hover:bg-black/80"
+              }`}
+            >
+              2. The Gap
+            </button>
+          </div>
 
           {/* 3. The Cross (Center) */}
-          <button
-            onClick={() => setActiveStep("cross")}
-            className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 px-3 py-2 sm:px-4 sm:py-2.5 rounded-2xl backdrop-blur-md border transition-all text-xs sm:text-sm font-black shadow-2xl flex items-center gap-1.5 ${
-              activeStep === "cross"
-                ? "bg-amber-500 text-slate-950 border-amber-300 scale-110 ring-2 sm:ring-4 ring-amber-400/50 shadow-glow-gold"
-                : "bg-black/75 text-amber-400 border-amber-500/50 hover:bg-black/90 hover:scale-105"
-            }`}
-          >
-            <span className="text-sm sm:text-base font-bold">✝</span>
-            3. The Bridge
-          </button>
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20">
+            {showTooltip && activeStep === "cross" && (
+              <div
+                role="tooltip"
+                className="absolute bottom-full mb-3 left-1/2 -translate-x-1/2 w-64 sm:w-80 max-w-[calc(100vw-3rem)] p-3 sm:p-4 rounded-2xl bg-slate-950/95 text-white backdrop-blur-xl border border-amber-400/50 shadow-[0_14px_35px_rgba(245,158,11,0.3)] animate-fade-in-up"
+              >
+                <div className="flex items-center justify-between gap-2 mb-1.5">
+                  <span className="inline-flex items-center gap-1.5 text-[10px] sm:text-xs font-bold uppercase tracking-wider text-amber-300 bg-amber-500/25 px-2 py-0.5 rounded-md border border-amber-400/40">
+                    <span className="w-1.5 h-1.5 rounded-full bg-amber-400 animate-ping" />
+                    Step 3 • The Bridge
+                  </span>
+                  <button
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      setShowTooltip(false);
+                    }}
+                    className="p-1 rounded-md text-white/60 hover:text-white hover:bg-white/10 transition-colors"
+                    aria-label="Close tooltip"
+                  >
+                    <X className="w-3.5 h-3.5" />
+                  </button>
+                </div>
+                <p className="text-xs sm:text-sm font-medium text-slate-100 leading-snug mb-2">
+                  {descriptions.cross.shortTooltip}
+                </p>
+                <div className="flex items-center justify-between pt-1.5 border-t border-white/10 text-[10px] sm:text-[11px]">
+                  <span className="font-mono text-amber-300 font-semibold">{descriptions.cross.verse}</span>
+                  <span className="text-slate-400">See details below ↓</span>
+                </div>
+                {/* Tooltip Arrow */}
+                <div className="absolute -bottom-1.5 left-1/2 -translate-x-1/2 w-3 h-3 rotate-45 bg-slate-950 border-r border-b border-amber-400/50" />
+              </div>
+            )}
+            <button
+              onClick={() => handleStepClick("cross")}
+              className={`px-3 py-2 sm:px-4 sm:py-2.5 rounded-2xl backdrop-blur-md border transition-all text-xs sm:text-sm font-black shadow-2xl flex items-center gap-1.5 ${
+                activeStep === "cross"
+                  ? "bg-amber-500 text-slate-950 border-amber-300 scale-110 ring-2 sm:ring-4 ring-amber-400/50 shadow-glow-gold"
+                  : "bg-black/75 text-amber-400 border-amber-500/50 hover:bg-black/90 hover:scale-105"
+              }`}
+            >
+              <span className="text-sm sm:text-base font-bold">✝</span>
+              3. The Bridge
+            </button>
+          </div>
 
           {/* 4. Right Mountain (Holy God) */}
-          <button
-            onClick={() => setActiveStep("god")}
-            className={`absolute bottom-3 right-2 sm:bottom-6 sm:right-8 px-2.5 py-1.5 sm:px-3.5 sm:py-2 rounded-xl backdrop-blur-md border transition-all text-[11px] sm:text-sm font-bold shadow-xl flex items-center gap-1.5 ${
-              activeStep === "god"
-                ? "bg-emerald-500 text-slate-950 border-emerald-300 scale-105 ring-2 sm:ring-4 ring-emerald-500/40"
-                : "bg-black/60 text-white/90 border-white/20 hover:bg-black/80 hover:scale-105"
-            }`}
-          >
-            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping" />
-            4. God
-          </button>
+          <div className="absolute bottom-3 right-2 sm:bottom-6 sm:right-8 z-20">
+            {showTooltip && activeStep === "god" && (
+              <div
+                role="tooltip"
+                className="absolute bottom-full mb-2.5 right-0 w-60 sm:w-72 max-w-[calc(100vw-3rem)] p-3 sm:p-3.5 rounded-2xl bg-slate-950/95 text-white backdrop-blur-xl border border-emerald-500/40 shadow-[0_12px_30px_rgba(0,0,0,0.6)] animate-fade-in-up"
+              >
+                <div className="flex items-center justify-between gap-2 mb-1.5">
+                  <span className="inline-flex items-center gap-1.5 text-[10px] sm:text-xs font-bold uppercase tracking-wider text-emerald-300 bg-emerald-500/20 px-2 py-0.5 rounded-md border border-emerald-500/30">
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping" />
+                    Step 4 • God
+                  </span>
+                  <button
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      setShowTooltip(false);
+                    }}
+                    className="p-1 rounded-md text-white/60 hover:text-white hover:bg-white/10 transition-colors"
+                    aria-label="Close tooltip"
+                  >
+                    <X className="w-3.5 h-3.5" />
+                  </button>
+                </div>
+                <p className="text-xs sm:text-sm font-medium text-slate-200 leading-snug mb-2">
+                  {descriptions.god.shortTooltip}
+                </p>
+                <div className="flex items-center justify-between pt-1.5 border-t border-white/10 text-[10px] sm:text-[11px]">
+                  <span className="font-mono text-emerald-300 font-semibold">{descriptions.god.verse}</span>
+                  <span className="text-slate-400">See details below ↓</span>
+                </div>
+                {/* Tooltip Arrow */}
+                <div className="absolute -bottom-1.5 right-6 w-3 h-3 rotate-45 bg-slate-950 border-r border-b border-emerald-500/40" />
+              </div>
+            )}
+            <button
+              onClick={() => handleStepClick("god")}
+              className={`px-2.5 py-1.5 sm:px-3.5 sm:py-2 rounded-xl backdrop-blur-md border transition-all text-[11px] sm:text-sm font-bold shadow-xl flex items-center gap-1.5 ${
+                activeStep === "god"
+                  ? "bg-emerald-500 text-slate-950 border-emerald-300 scale-105 ring-2 sm:ring-4 ring-emerald-500/40"
+                  : "bg-black/60 text-white/90 border-white/20 hover:bg-black/80 hover:scale-105"
+              }`}
+            >
+              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping" />
+              4. God
+            </button>
+          </div>
         </div>
       </div>
 
@@ -211,10 +377,14 @@ export function BridgeIllustration({ translation }: BridgeProps) {
             {(["man", "chasm", "cross", "god"] as const).map((stepKey, idx) => (
               <button
                 key={stepKey}
-                onClick={() => setActiveStep(stepKey)}
+                onClick={() => {
+                  setActiveStep(stepKey);
+                  setShowTooltip(true);
+                }}
+                title={`Click to inspect: ${descriptions[stepKey].title}`}
                 className={`text-xs px-3 py-1.5 rounded-lg font-semibold transition-all ${
                   activeStep === stepKey
-                    ? "bg-amber-500 text-slate-950 shadow-sm font-bold"
+                    ? "bg-amber-500 text-slate-950 shadow-sm font-bold scale-105"
                     : "bg-gospel-surface border border-gospel-border text-gospel-muted hover:text-gospel-text"
                 }`}
               >
@@ -233,7 +403,10 @@ export function BridgeIllustration({ translation }: BridgeProps) {
                   "god",
                 ];
                 const nextIdx = order.indexOf(activeStep) + 1;
-                if (nextIdx < order.length) setActiveStep(order[nextIdx]);
+                if (nextIdx < order.length) {
+                  setActiveStep(order[nextIdx]);
+                  setShowTooltip(true);
+                }
               }}
               className="text-xs font-bold px-4 py-2 rounded-xl bg-amber-500/20 text-amber-700 dark:text-amber-300 hover:bg-amber-500 hover:text-slate-950 border border-amber-500/40 transition-all flex items-center gap-1.5"
             >
@@ -254,3 +427,4 @@ export function BridgeIllustration({ translation }: BridgeProps) {
     </section>
   );
 }
+
